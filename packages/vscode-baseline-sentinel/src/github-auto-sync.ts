@@ -28,6 +28,7 @@ export async function startGitHubAutoSync(context: vscode.ExtensionContext) {
   if (!token) {
     vscode.window.showWarningMessage(
       'GitHub token not configured. Auto-sync disabled.',
+      { modal: true },
       'Set Up Token'
     ).then(async (choice) => {
       if (choice === 'Set Up Token') {
@@ -42,7 +43,7 @@ export async function startGitHubAutoSync(context: vscode.ExtensionContext) {
     return;
   }
 
-  // Poll every 2 minutes
+  // Poll every 30 seconds
   if (syncInterval) {
     clearInterval(syncInterval);
   }
@@ -51,7 +52,7 @@ export async function startGitHubAutoSync(context: vscode.ExtensionContext) {
   
   syncInterval = setInterval(async () => {
     await checkForNewResults(token, repoInfo);
-  }, 120000); // 2 minutes
+  }, 30000); // 30 seconds
 
   // Check immediately on startup
   await checkForNewResults(token, repoInfo);
@@ -192,7 +193,8 @@ async function fetchArtifactData(token: string, repoInfo: { owner: string; repo:
  */
 async function showResultsNotification(data: CIScanReport) {
   const choice = await vscode.window.showInformationMessage(
-    '🔔 New CI scan completed! Click to automatically download and import results.',
+    '🔔 New CI scan completed! Automatically download and import results?',
+    { modal: true },
     'Import Now', 'View on GitHub', 'Dismiss'
   );
 
@@ -234,7 +236,7 @@ export async function enableAutoSync(context: vscode.ExtensionContext) {
   await config.update('autoSyncEnabled', true, vscode.ConfigurationTarget.Global);
 
   vscode.window.showInformationMessage(
-    '✅ Auto-sync enabled! VS Code will check for new CI results every 2 minutes.',
+    '✅ Auto-sync enabled! VS Code will check for new CI results every 30 seconds.',
     'Got It'
   );
 

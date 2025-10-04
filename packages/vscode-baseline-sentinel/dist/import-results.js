@@ -54,7 +54,7 @@ async function importCIResults() {
     const config = vscode.workspace.getConfiguration('baseline-sentinel');
     const token = config.get('githubToken');
     if (!token) {
-        const choice = await vscode.window.showWarningMessage('GitHub token not configured. Auto-download requires a token.', 'Set Up Token', 'Manual Import', 'Cancel');
+        const choice = await vscode.window.showWarningMessage('GitHub token not configured. Auto-download requires a token.', { modal: true }, 'Set Up Token', 'Manual Import', 'Cancel');
         if (choice === 'Set Up Token') {
             await vscode.commands.executeCommand('baseline.enableAutoSync');
             return;
@@ -94,7 +94,7 @@ async function importCIResults() {
             await processReport(report, workspaceFolders[0].uri.fsPath);
         }
         catch (error) {
-            vscode.window.showErrorMessage(`Failed to download CI results: ${error.message}`, 'Manual Import').then(async (choice) => {
+            vscode.window.showErrorMessage(`Failed to download CI results: ${error.message}`, { modal: true }, 'Manual Import').then(async (choice) => {
                 if (choice === 'Manual Import') {
                     await manualImport();
                 }
@@ -300,7 +300,7 @@ async function extractJsonFromZip(zipPath) {
  */
 async function processReport(report, workspaceRoot) {
     // Display summary
-    const proceed = await vscode.window.showInformationMessage(`Found ${report.totalIssues} issue(s) in ${report.fileReports.length} file(s). Review and fix?`, 'Review', 'Fix All', 'Cancel');
+    const proceed = await vscode.window.showInformationMessage(`Found ${report.totalIssues} issue(s) in ${report.fileReports.length} file(s). Review and fix?`, { modal: true }, 'Review', 'Fix All', 'Cancel');
     if (proceed === 'Cancel' || !proceed) {
         return;
     }

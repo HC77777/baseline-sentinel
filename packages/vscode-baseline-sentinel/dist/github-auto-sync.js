@@ -51,7 +51,7 @@ async function startGitHubAutoSync(context) {
     }
     const token = config.get('githubToken');
     if (!token) {
-        vscode.window.showWarningMessage('GitHub token not configured. Auto-sync disabled.', 'Set Up Token').then(async (choice) => {
+        vscode.window.showWarningMessage('GitHub token not configured. Auto-sync disabled.', { modal: true }, 'Set Up Token').then(async (choice) => {
             if (choice === 'Set Up Token') {
                 await enableAutoSync(context);
             }
@@ -62,14 +62,14 @@ async function startGitHubAutoSync(context) {
     if (!repoInfo) {
         return;
     }
-    // Poll every 2 minutes
+    // Poll every 30 seconds
     if (syncInterval) {
         clearInterval(syncInterval);
     }
     console.log('[Auto-Sync] Starting GitHub polling...');
     syncInterval = setInterval(async () => {
         await checkForNewResults(token, repoInfo);
-    }, 120000); // 2 minutes
+    }, 30000); // 30 seconds
     // Check immediately on startup
     await checkForNewResults(token, repoInfo);
 }
@@ -189,7 +189,7 @@ async function fetchArtifactData(token, repoInfo, runId) {
  * Shows notification about new CI results
  */
 async function showResultsNotification(data) {
-    const choice = await vscode.window.showInformationMessage('🔔 New CI scan completed! Click to automatically download and import results.', 'Import Now', 'View on GitHub', 'Dismiss');
+    const choice = await vscode.window.showInformationMessage('🔔 New CI scan completed! Automatically download and import results?', { modal: true }, 'Import Now', 'View on GitHub', 'Dismiss');
     if (choice === 'Import Now') {
         // Automatically download and import
         vscode.commands.executeCommand('baseline.importCIResults');
@@ -224,7 +224,7 @@ async function enableAutoSync(context) {
     const config = vscode.workspace.getConfiguration('baseline-sentinel');
     await config.update('githubToken', token, vscode.ConfigurationTarget.Global);
     await config.update('autoSyncEnabled', true, vscode.ConfigurationTarget.Global);
-    vscode.window.showInformationMessage('✅ Auto-sync enabled! VS Code will check for new CI results every 2 minutes.', 'Got It');
+    vscode.window.showInformationMessage('✅ Auto-sync enabled! VS Code will check for new CI results every 30 seconds.', 'Got It');
     // Start syncing immediately
     await startGitHubAutoSync(context);
 }

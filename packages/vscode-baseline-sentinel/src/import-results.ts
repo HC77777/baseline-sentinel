@@ -39,6 +39,7 @@ export async function importCIResults() {
   if (!token) {
     const choice = await vscode.window.showWarningMessage(
       'GitHub token not configured. Auto-download requires a token.',
+      { modal: true },
       'Set Up Token', 'Manual Import', 'Cancel'
     );
     
@@ -91,6 +92,7 @@ export async function importCIResults() {
     } catch (error: any) {
       vscode.window.showErrorMessage(
         `Failed to download CI results: ${error.message}`,
+        { modal: true },
         'Manual Import'
       ).then(async (choice) => {
         if (choice === 'Manual Import') {
@@ -319,6 +321,7 @@ async function processReport(report: CIScanReport, workspaceRoot: string) {
   // Display summary
   const proceed = await vscode.window.showInformationMessage(
     `Found ${report.totalIssues} issue(s) in ${report.fileReports.length} file(s). Review and fix?`,
+    { modal: true },
     'Review', 'Fix All', 'Cancel'
   );
 
