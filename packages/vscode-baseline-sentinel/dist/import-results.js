@@ -336,8 +336,8 @@ async function openReviewPanel(report, workspaceRoot) {
         language: 'markdown'
     });
     await vscode.window.showTextDocument(doc, { preview: false });
-    // Non-blocking notification so user can review the report
-    vscode.window.showInformationMessage('📋 Review complete! Click "Fix All" when ready to apply fixes.', 'Fix All', 'Dismiss').then(async (selection) => {
+    // Modal notification so Fix All button stays until user clicks
+    vscode.window.showInformationMessage('📋 Review complete! Click "Fix All" when ready to apply fixes, or "Keep Reviewing" to continue.', { modal: true }, 'Fix All', 'Keep Reviewing').then(async (selection) => {
         if (selection === 'Fix All') {
             await applyAllFixes(report, workspaceRoot);
         }
