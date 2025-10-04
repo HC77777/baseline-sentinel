@@ -40,6 +40,7 @@ const vscode = __importStar(require("vscode"));
 const https = __importStar(require("https"));
 let syncInterval = null;
 let lastCheckedTime = null;
+let statusBarItem = null;
 /**
  * Starts auto-sync (polling GitHub for new CI results)
  */
@@ -60,18 +61,26 @@ async function startGitHubAutoSync(context) {
     }
     const repoInfo = getRepositoryInfo();
     if (!repoInfo) {
+        vscode.window.showWarningMessage('Cannot start auto-sync: No GitHub repository detected');
         return;
+    }
+    // Create status bar item
+    if (!statusBarItem) {
+        statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+        statusBarItem.text = '$(sync~spin) Baseline Polling';
+        statusBarItem.tooltip = `Checking ${repoInfo.owner}/${repoInfo.repo} every 5 seconds`;
+        context.subscriptions.push(statusBarItem);
+        statusBarItem.show();
     }
     // Poll every 5 seconds
     if (syncInterval) {
         clearInterval(syncInterval);
     }
-    console.log('[Auto-Sync] Starting GitHub polling every 5 seconds...');
+    vscode.window.showInformationMessage(`✅ Polling started! Checking ${repoInfo.owner}/${repoInfo.repo} every 5 seconds.`);
     syncInterval = setInterval(async () => {
         await checkForNewResults(token, repoInfo);
     }, 5000); // 5 seconds
     // Check immediately on startup
-    console.log('[Auto-Sync] Initial check...');
     await checkForNewResults(token, repoInfo);
 }
 /**
@@ -81,7 +90,11 @@ function stopGitHubAutoSync() {
     if (syncInterval) {
         clearInterval(syncInterval);
         syncInterval = null;
-        console.log('[Auto-Sync] Stopped.');
+    }
+    if (statusBarItem) {
+        statusBarItem.hide();
+        statusBarItem.dispose();
+        statusBarItem = null;
     }
 }
 /**

@@ -10,9 +10,17 @@ let diagnosticCollection: vscode.DiagnosticCollection;
 let latestFindings: Map<string, Finding[]> = new Map();
 // A debounce timer for on-the-fly diagnostics
 let debounceTimer: NodeJS.Timeout;
+// Output channel for logging
+export let outputChannel: vscode.OutputChannel;
 
 
 export async function activate(context: vscode.ExtensionContext) {
+  // Create output channel for logging
+  outputChannel = vscode.window.createOutputChannel('Baseline Sentinel');
+  context.subscriptions.push(outputChannel);
+  
+  outputChannel.appendLine('🚀 Baseline Sentinel activated!');
+  
   // Create a diagnostic collection to hold our warnings.
   diagnosticCollection = vscode.languages.createDiagnosticCollection('baselineSentinel');
   context.subscriptions.push(diagnosticCollection);

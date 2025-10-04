@@ -33,6 +33,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.outputChannel = void 0;
 exports.activate = activate;
 exports.deactivate = deactivate;
 const vscode = __importStar(require("vscode"));
@@ -47,6 +48,10 @@ let latestFindings = new Map();
 // A debounce timer for on-the-fly diagnostics
 let debounceTimer;
 async function activate(context) {
+    // Create output channel for logging
+    exports.outputChannel = vscode.window.createOutputChannel('Baseline Sentinel');
+    context.subscriptions.push(exports.outputChannel);
+    exports.outputChannel.appendLine('🚀 Baseline Sentinel activated!');
     // Create a diagnostic collection to hold our warnings.
     diagnosticCollection = vscode.languages.createDiagnosticCollection('baselineSentinel');
     context.subscriptions.push(diagnosticCollection);
