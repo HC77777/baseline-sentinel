@@ -46,7 +46,7 @@ jobs:
       - name: Checkout Baseline Sentinel
         uses: actions/checkout@v4
         with:
-          repository: haricharanvallem7/baseline-sentinel
+          repository: HC77777/baseline-sentinel
           path: baseline-sentinel
 
       - name: Setup Node.js
