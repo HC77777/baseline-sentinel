@@ -168,6 +168,11 @@ async function activate(context) {
         await (0, github_auto_sync_1.enableAutoSync)(context);
     });
     context.subscriptions.push(enableSyncCommand);
+    // === NEW: Command to fix all from last CI scan ===
+    const fixAllFromCICommand = vscode.commands.registerCommand('baseline.fixAllFromCI', async () => {
+        await (0, import_results_1.fixAllFromCI)();
+    });
+    context.subscriptions.push(fixAllFromCICommand);
     // === NEW: A command to generate a report and copy it to the clipboard ===
     const reportCommand = vscode.commands.registerCommand('baseline.sendReportToChat', () => {
         let report = '## Baseline Sentinel Report\n\n';

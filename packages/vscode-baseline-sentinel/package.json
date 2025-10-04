@@ -49,12 +49,22 @@
         "command": "baseline.enableAutoSync",
         "title": "Baseline Sentinel: Enable Auto-Sync (Polling)",
         "icon": "$(sync)"
+      },
+      {
+        "command": "baseline.fixAllFromCI",
+        "title": "Baseline Sentinel: Fix All Issues from Last CI Scan",
+        "icon": "$(cloud-download)"
       }
     ],
     "menus": {
       "editor/title": [
         {
           "command": "baseline.fixAllInFile",
+          "when": "editorLangId == css || editorLangId == javascript || editorLangId == typescript || editorLangId == typescriptreact",
+          "group": "navigation"
+        },
+        {
+          "command": "baseline.fixAllFromCI",
           "when": "editorLangId == css || editorLangId == javascript || editorLangId == typescript || editorLangId == typescriptreact",
           "group": "navigation"
         }

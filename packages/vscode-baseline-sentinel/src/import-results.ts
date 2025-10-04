@@ -5,6 +5,10 @@ import * as fs from 'fs';
 import * as os from 'os';
 import AdmZip = require('adm-zip');
 
+// Store the last imported CI report for "Fix All from CI" command
+let lastCIReport: CIScanReport | null = null;
+let lastCIWorkspaceRoot: string | null = null;
+
 interface CIResult {
   path: string;
   findings: Array<{
@@ -20,6 +24,22 @@ interface CIScanReport {
   totalIssues: number;
   fileReports: CIResult[];
   totalFiles: number;
+}
+
+/**
+ * Validates that the current workspace matches the GitHub repository
+ */
+function validateWorkspaceMatchesRepo(repoInfo: { owner: string; repo: string }): boolean {
+  const workspaceFolders = vscode.workspace.workspaceFolders;
+  if (!workspaceFolders) {
+    return false;
+  }
+
+  const workspaceName = path.basename(workspaceFolders[0].uri.fsPath);
+  const repoName = repoInfo.repo;
+
+  // Check if workspace folder name matches repo name
+  return workspaceName.toLowerCase() === repoName.toLowerCase();
 }
 
 /**
@@ -65,6 +85,17 @@ export async function importCIResults() {
       const repoInfo = getRepositoryInfo();
       if (!repoInfo) {
         throw new Error('Could not detect GitHub repository');
+      }
+
+      // Validate workspace matches repo
+      if (!validateWorkspaceMatchesRepo(repoInfo)) {
+        const workspaceName = path.basename(workspaceFolders[0].uri.fsPath);
+        throw new Error(
+          `Workspace mismatch!\n\n` +
+          `VS Code folder: "${workspaceName}"\n` +
+          `GitHub repo: "${repoInfo.repo}"\n\n` +
+          `Please open the correct folder that matches your GitHub repository.`
+        );
       }
 
       progress.report({ message: 'Finding latest workflow run...' });
@@ -317,6 +348,9 @@ async function extractJsonFromZip(zipPath: string): Promise<CIScanReport> {
  * Process and display the report
  */
 async function processReport(report: CIScanReport, workspaceRoot: string) {
+  // Store for "Fix All from CI" button
+  lastCIReport = report;
+  lastCIWorkspaceRoot = workspaceRoot;
 
   // Display summary
   const proceed = await vscode.window.showInformationMessage(
@@ -366,16 +400,10 @@ async function openReviewPanel(report: CIScanReport, workspaceRoot: string) {
   
   await vscode.window.showTextDocument(doc, { preview: false });
   
-  // Modal notification so Fix All button stays until user clicks
+  // Non-blocking notification - use the cloud icon in title bar to fix all
   vscode.window.showInformationMessage(
-    '📋 Review complete! Click "Fix All" when ready to apply fixes, or "Keep Reviewing" to continue.',
-    { modal: true },
-    'Fix All', 'Keep Reviewing'
-  ).then(async (selection) => {
-    if (selection === 'Fix All') {
-      await applyAllFixes(report, workspaceRoot);
-    }
-  });
+    '📋 Review complete! Use the cloud icon (☁️) in the title bar to "Fix All from CI".'
+  );
 }
 
 /**
@@ -445,6 +473,35 @@ export async function showDownloadInstructions() {
     vscode.window.showWarningMessage('Could not detect GitHub repository URL.');
   } else if (choice === 'Import Results Now') {
     await importCIResults();
+  }
+}
+
+/**
+ * Fixes all issues from the last imported CI scan
+ * Called by the cloud icon button in the editor title bar
+ */
+export async function fixAllFromCI() {
+  if (!lastCIReport || !lastCIWorkspaceRoot) {
+    vscode.window.showWarningMessage(
+      'No CI scan results available. Import CI results first.',
+      { modal: true },
+      'Import Now'
+    ).then(async (choice) => {
+      if (choice === 'Import Now') {
+        await importCIResults();
+      }
+    });
+    return;
+  }
+
+  const confirm = await vscode.window.showWarningMessage(
+    `Fix all ${lastCIReport.totalIssues} issue(s) from the last CI scan?`,
+    { modal: true },
+    'Fix All', 'Cancel'
+  );
+
+  if (confirm === 'Fix All') {
+    await applyAllFixes(lastCIReport, lastCIWorkspaceRoot);
   }
 }
 

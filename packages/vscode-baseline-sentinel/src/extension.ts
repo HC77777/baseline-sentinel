@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import { scanCode, Finding, getRemediation, Fix } from 'baseline-fixer-core';
 import { FixProvider } from './FixProvider';
 import { setupGitHubAction, promptGitHubActionSetup } from './github-setup';
-import { importCIResults, showDownloadInstructions } from './import-results';
+import { importCIResults, showDownloadInstructions, fixAllFromCI } from './import-results';
 import { startGitHubAutoSync, stopGitHubAutoSync, enableAutoSync } from './github-auto-sync';
 
 let diagnosticCollection: vscode.DiagnosticCollection;
@@ -169,6 +169,12 @@ export async function activate(context: vscode.ExtensionContext) {
     await enableAutoSync(context);
   });
   context.subscriptions.push(enableSyncCommand);
+
+  // === NEW: Command to fix all from last CI scan ===
+  const fixAllFromCICommand = vscode.commands.registerCommand('baseline.fixAllFromCI', async () => {
+    await fixAllFromCI();
+  });
+  context.subscriptions.push(fixAllFromCICommand);
 
   // === NEW: A command to generate a report and copy it to the clipboard ===
   const reportCommand = vscode.commands.registerCommand('baseline.sendReportToChat', () => {
