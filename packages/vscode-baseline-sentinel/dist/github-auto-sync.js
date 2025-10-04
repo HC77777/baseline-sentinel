@@ -62,14 +62,14 @@ async function startGitHubAutoSync(context) {
     if (!repoInfo) {
         return;
     }
-    // Poll every 30 seconds
+    // Poll every 5 seconds
     if (syncInterval) {
         clearInterval(syncInterval);
     }
     console.log('[Auto-Sync] Starting GitHub polling...');
     syncInterval = setInterval(async () => {
         await checkForNewResults(token, repoInfo);
-    }, 30000); // 30 seconds
+    }, 5000); // 5 seconds
     // Check immediately on startup
     await checkForNewResults(token, repoInfo);
 }
@@ -224,7 +224,7 @@ async function enableAutoSync(context) {
     const config = vscode.workspace.getConfiguration('baseline-sentinel');
     await config.update('githubToken', token, vscode.ConfigurationTarget.Global);
     await config.update('autoSyncEnabled', true, vscode.ConfigurationTarget.Global);
-    vscode.window.showInformationMessage('✅ Auto-sync enabled! VS Code will check for new CI results every 30 seconds.', 'Got It');
+    vscode.window.showInformationMessage('✅ Auto-sync enabled! VS Code will check for new CI results every 5 seconds.', 'Got It');
     // Start syncing immediately
     await startGitHubAutoSync(context);
 }

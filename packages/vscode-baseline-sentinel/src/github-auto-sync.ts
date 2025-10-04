@@ -43,7 +43,7 @@ export async function startGitHubAutoSync(context: vscode.ExtensionContext) {
     return;
   }
 
-  // Poll every 30 seconds
+  // Poll every 5 seconds
   if (syncInterval) {
     clearInterval(syncInterval);
   }
@@ -52,7 +52,7 @@ export async function startGitHubAutoSync(context: vscode.ExtensionContext) {
   
   syncInterval = setInterval(async () => {
     await checkForNewResults(token, repoInfo);
-  }, 30000); // 30 seconds
+  }, 5000); // 5 seconds
 
   // Check immediately on startup
   await checkForNewResults(token, repoInfo);
@@ -236,7 +236,7 @@ export async function enableAutoSync(context: vscode.ExtensionContext) {
   await config.update('autoSyncEnabled', true, vscode.ConfigurationTarget.Global);
 
   vscode.window.showInformationMessage(
-    '✅ Auto-sync enabled! VS Code will check for new CI results every 30 seconds.',
+    '✅ Auto-sync enabled! VS Code will check for new CI results every 5 seconds.',
     'Got It'
   );
 

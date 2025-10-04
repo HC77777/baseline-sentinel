@@ -336,7 +336,8 @@ async function openReviewPanel(report, workspaceRoot) {
         language: 'markdown'
     });
     await vscode.window.showTextDocument(doc, { preview: false });
-    vscode.window.showInformationMessage('Review the issues. Click links to jump to code. Use "Fix All" to auto-fix issues.', { modal: true }, 'Fix All', 'Done Reviewing').then(async (selection) => {
+    // Non-blocking notification so user can review the report
+    vscode.window.showInformationMessage('📋 Review complete! Click "Fix All" when ready to apply fixes.', 'Fix All', 'Dismiss').then(async (selection) => {
         if (selection === 'Fix All') {
             await applyAllFixes(report, workspaceRoot);
         }
