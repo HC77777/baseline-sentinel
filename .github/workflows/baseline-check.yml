@@ -1,0 +1,50 @@
+name: Baseline Sentinel Check
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  baseline-check:
+    name: Check Web Features Baseline
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build packages
+        run: pnpm run build
+
+      - name: Run Baseline Sentinel scan
+        run: |
+          cd packages/action-baseline-sentinel
+          node index.js ../../ github
+        continue-on-error: true
+        
+      - name: Upload scan results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: baseline-sentinel-results
+          path: baseline-results.json
+

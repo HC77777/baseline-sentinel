@@ -1,0 +1,46 @@
+# Copy this file to your project's .github/workflows/baseline-check.yml
+
+name: Baseline Sentinel Check
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  baseline-check:
+    name: Check Web Features Baseline
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Baseline Sentinel CLI
+        run: |
+          npm install -g baseline-sentinel
+          # Or if publishing to npm isn't done yet, use npx with the repo:
+          # npx github:YOUR_USERNAME/baseline-sentinel/packages/action-baseline-sentinel
+
+      - name: Run Baseline Sentinel scan
+        run: |
+          npx baseline-sentinel . github
+        continue-on-error: true
+        
+      - name: Upload scan results (optional)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: baseline-sentinel-results
+          path: baseline-results.json
+

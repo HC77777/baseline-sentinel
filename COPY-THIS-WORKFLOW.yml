@@ -1,0 +1,32 @@
+# ========================================
+# COPY THIS FILE TO YOUR PROJECT
+# Save as: .github/workflows/baseline-check.yml
+# ========================================
+
+name: Baseline Sentinel
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  scan:
+    name: Check Web Compatibility
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      # This single line scans your entire project!
+      - uses: YOUR_USERNAME/baseline-sentinel@main
+        with:
+          path: '.'
+          fail-on-issues: 'false'
+
+# ========================================
+# SETUP INSTRUCTIONS:
+# 1. Push the baseline-sentinel repo to YOUR_USERNAME/baseline-sentinel
+# 2. Replace YOUR_USERNAME above with your GitHub username
+# 3. Copy this file to your project's .github/workflows/baseline-check.yml
+# 4. Push and you're done!
+# ========================================
+

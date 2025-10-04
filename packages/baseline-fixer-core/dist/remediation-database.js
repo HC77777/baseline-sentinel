@@ -1,0 +1,3815 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.REMEDIATION_DATABASE = void 0;
+exports.REMEDIATION_DATABASE = {
+    'api.Accelerometer': {
+        featureId: 'api.Accelerometer',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Accelerometer (api.Accelerometer)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.accent-color': {
+        featureId: 'css.properties.accent-color',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for accent-color (css.properties.accent-color)',
+                payload: {},
+            },
+        ],
+    },
+    'javascript.builtins.Object.defineGetter': {
+        featureId: 'javascript.builtins.Object.defineGetter',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Accessor methods (javascript.builtins.Object.defineGetter)',
+                payload: {},
+            },
+        ],
+    },
+    'api.ViewTransition.types': {
+        featureId: 'api.ViewTransition.types',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Active view transition (api.ViewTransition.types)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.alignment-baseline': {
+        featureId: 'css.properties.alignment-baseline',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for alignment-baseline (css.properties.alignment-baseline)',
+                payload: {},
+            },
+        ],
+    },
+    'html.elements.link.rel.alternate_stylesheet': {
+        featureId: 'html.elements.link.rel.alternate_stylesheet',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Alternative style sheets (html.elements.link.rel.alternate_stylesheet)',
+                payload: {},
+            },
+        ],
+    },
+    'api.AmbientLightSensor': {
+        featureId: 'api.AmbientLightSensor',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Ambient light sensor (api.AmbientLightSensor)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.align-items.anchor-center': {
+        featureId: 'css.properties.align-items.anchor-center',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Anchor positioning (css.properties.align-items.anchor-center)',
+                payload: {},
+            },
+        ],
+    },
+    'api.LaunchParams.files': {
+        featureId: 'api.LaunchParams.files',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for File handlers (api.LaunchParams.files)',
+                payload: {},
+            },
+        ],
+    },
+    'api.LaunchParams': {
+        featureId: 'api.LaunchParams',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Launch handler (api.LaunchParams)',
+                payload: {},
+            },
+        ],
+    },
+    'manifests.webapp.protocol_handlers': {
+        featureId: 'manifests.webapp.protocol_handlers',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Protocol handlers (manifests.webapp.protocol_handlers)',
+                payload: {},
+            },
+        ],
+    },
+    'manifests.webapp.share_target': {
+        featureId: 'manifests.webapp.share_target',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Share targets (manifests.webapp.share_target)',
+                payload: {},
+            },
+        ],
+    },
+    'manifests.webapp.shortcuts': {
+        featureId: 'manifests.webapp.shortcuts',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Application shortcuts (manifests.webapp.shortcuts)',
+                payload: {},
+            },
+        ],
+    },
+    'javascript.functions.arguments.callee': {
+        featureId: 'javascript.functions.arguments.callee',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for arguments.callee (javascript.functions.arguments.callee)',
+                payload: {},
+            },
+        ],
+    },
+    'api.ReadableStream.@@asyncIterator': {
+        featureId: 'api.ReadableStream.@@asyncIterator',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Asynchronously iterable streams (api.ReadableStream.@@asyncIterator)',
+                payload: {},
+            },
+        ],
+    },
+    'javascript.builtins.Atomics.waitAsync': {
+        featureId: 'javascript.builtins.Atomics.waitAsync',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Atomics.waitAsync (javascript.builtins.Atomics.waitAsync)',
+                payload: {},
+            },
+        ],
+    },
+    'css.types.attr.fallback': {
+        featureId: 'css.types.attr.fallback',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for attr() (css.types.attr.fallback)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLAnchorElement.attributionSrc': {
+        featureId: 'api.HTMLAnchorElement.attributionSrc',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Attribution reporting (api.HTMLAnchorElement.attributionSrc)',
+                payload: {},
+            },
+        ],
+    },
+    'api.AudioSession': {
+        featureId: 'api.AudioSession',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Audio session (api.AudioSession)',
+                payload: {},
+            },
+        ],
+    },
+    'api.AudioTrack': {
+        featureId: 'api.AudioTrack',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Audio and video tracks (api.AudioTrack)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLElement.autocapitalize': {
+        featureId: 'api.HTMLElement.autocapitalize',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for autocapitalize (api.HTMLElement.autocapitalize)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLElement.autocorrect': {
+        featureId: 'api.HTMLElement.autocorrect',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for autocorrect (api.HTMLElement.autocorrect)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.background-clip.border-area': {
+        featureId: 'css.properties.background-clip.border-area',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for background-clip: border-area (css.properties.background-clip.border-area)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.background-clip.text': {
+        featureId: 'css.properties.background-clip.text',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for background-clip: text (css.properties.background-clip.text)',
+                payload: {},
+            },
+        ],
+    },
+    'api.BackgroundFetchEvent': {
+        featureId: 'api.BackgroundFetchEvent',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Background fetch (api.BackgroundFetchEvent)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Permissions.permission_background-sync': {
+        featureId: 'api.Permissions.permission_background-sync',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Background sync (api.Permissions.permission_background-sync)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Navigator.clearAppBadge': {
+        featureId: 'api.Navigator.clearAppBadge',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Badging (api.Navigator.clearAppBadge)',
+                payload: {},
+            },
+        ],
+    },
+    'api.BarcodeDetector': {
+        featureId: 'api.BarcodeDetector',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Barcode detector (api.BarcodeDetector)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.baseline-shift': {
+        featureId: 'css.properties.baseline-shift',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for baseline-shift (css.properties.baseline-shift)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.baseline-source': {
+        featureId: 'css.properties.baseline-source',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for baseline-source (css.properties.baseline-source)',
+                payload: {},
+            },
+        ],
+    },
+    'api.BatteryManager': {
+        featureId: 'api.BatteryManager',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Battery status (api.BatteryManager)',
+                payload: {},
+            },
+        ],
+    },
+    'api.BeforeInstallPromptEvent': {
+        featureId: 'api.BeforeInstallPromptEvent',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for beforeinstallprompt (api.BeforeInstallPromptEvent)',
+                payload: {},
+            },
+        ],
+    },
+    'api.BeforeUnloadEvent': {
+        featureId: 'api.BeforeUnloadEvent',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for beforeunload (api.BeforeUnloadEvent)',
+                payload: {},
+            },
+        ],
+    },
+    'api.NotRestoredReasonDetails': {
+        featureId: 'api.NotRestoredReasonDetails',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Back/forward cache blocking reasons (api.NotRestoredReasonDetails)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLLinkElement.blocking': {
+        featureId: 'api.HTMLLinkElement.blocking',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for blocking="render" (api.HTMLLinkElement.blocking)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.box-decoration-break': {
+        featureId: 'css.properties.box-decoration-break',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for box-decoration-break (css.properties.box-decoration-break)',
+                payload: {},
+            },
+        ],
+    },
+    'css.types.calc-size': {
+        featureId: 'css.types.calc-size',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for calc-size() (css.types.calc-size)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLCanvasElement.getContext.2d_context.options_alpha_parameter': {
+        featureId: 'api.HTMLCanvasElement.getContext.2d_context.options_alpha_parameter',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for 2D canvas opacity (api.HTMLCanvasElement.getContext.2d_context.options_alpha_parameter)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLCanvasElement.getContext.2d_context.options_colorSpace_parameter': {
+        featureId: 'api.HTMLCanvasElement.getContext.2d_context.options_colorSpace_parameter',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Color management for 2D canvas (api.HTMLCanvasElement.getContext.2d_context.options_colorSpace_parameter)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLCanvasElement.getContext.2d_context.options_desynchronized_parameter': {
+        featureId: 'api.HTMLCanvasElement.getContext.2d_context.options_desynchronized_parameter',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Desynchronized 2D canvas (api.HTMLCanvasElement.getContext.2d_context.options_desynchronized_parameter)',
+                payload: {},
+            },
+        ],
+    },
+    'api.CanvasRenderingContext2D.isContextLost': {
+        featureId: 'api.CanvasRenderingContext2D.isContextLost',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for contextlost and contextrestored (api.CanvasRenderingContext2D.isContextLost)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLMediaElement.captureStream': {
+        featureId: 'api.HTMLMediaElement.captureStream',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for captureStream() for <audio> and <video> (api.HTMLMediaElement.captureStream)',
+                payload: {},
+            },
+        ],
+    },
+    'css.selectors.attribute.case_sensitive_modifier': {
+        featureId: 'css.selectors.attribute.case_sensitive_modifier',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Case-sensitive attribute selector (css.selectors.attribute.case_sensitive_modifier)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.clip': {
+        featureId: 'css.properties.clip',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for clip (css.properties.clip)',
+                payload: {},
+            },
+        ],
+    },
+    'api.ClipboardItem.type_web': {
+        featureId: 'api.ClipboardItem.type_web',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Custom formats for clipboard items (api.ClipboardItem.type_web)',
+                payload: {},
+            },
+        ],
+    },
+    'api.ClipboardItem.type_image_svg_xml': {
+        featureId: 'api.ClipboardItem.type_image_svg_xml',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for SVG clipboard items (api.ClipboardItem.type_image_svg_xml)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Clipboard.read.formats_unsanitized_parameter': {
+        featureId: 'api.Clipboard.read.formats_unsanitized_parameter',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Read unsanitized clipboard data (api.Clipboard.read.formats_unsanitized_parameter)',
+                payload: {},
+            },
+        ],
+    },
+    'api.CloseWatcher': {
+        featureId: 'api.CloseWatcher',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for CloseWatcher (api.CloseWatcher)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.color-adjust': {
+        featureId: 'css.properties.color-adjust',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for color-adjust (css.properties.color-adjust)',
+                payload: {},
+            },
+        ],
+    },
+    'unknown-bcd:color-contrast': {
+        featureId: 'unknown-bcd:color-contrast',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for color-contrast() (unknown-bcd:color-contrast)',
+                payload: {},
+            },
+        ],
+    },
+    'css.at-rules.font-face.OpenType_COLRv1': {
+        featureId: 'css.at-rules.font-face.OpenType_COLRv1',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for COLRv1 (css.at-rules.font-face.OpenType_COLRv1)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.break-after.avoid-column': {
+        featureId: 'css.properties.break-after.avoid-column',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Column breaks (css.properties.break-after.avoid-column)',
+                payload: {},
+            },
+        ],
+    },
+    'css.selectors.column': {
+        featureId: 'css.selectors.column',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for ::column (css.selectors.column)',
+                payload: {},
+            },
+        ],
+    },
+    'html.elements.link.rel.compression-dictionary': {
+        featureId: 'html.elements.link.rel.compression-dictionary',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Compression Dictionary Transport (html.elements.link.rel.compression-dictionary)',
+                payload: {},
+            },
+        ],
+    },
+    'api.PressureObserver': {
+        featureId: 'api.PressureObserver',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for CPU compute pressure (api.PressureObserver)',
+                payload: {},
+            },
+        ],
+    },
+    'api.ContactAddress': {
+        featureId: 'api.ContactAddress',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Contact picker (api.ContactAddress)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.container-type.scroll-state': {
+        featureId: 'css.properties.container-type.scroll-state',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Container scroll-state queries (css.properties.container-type.scroll-state)',
+                payload: {},
+            },
+        ],
+    },
+    'css.at-rules.container.style_queries_for_custom_properties': {
+        featureId: 'css.at-rules.container.style_queries_for_custom_properties',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Container style queries (css.at-rules.container.style_queries_for_custom_properties)',
+                payload: {},
+            },
+        ],
+    },
+    'api.ContentIndex': {
+        featureId: 'api.ContentIndex',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Content Index (api.ContentIndex)',
+                payload: {},
+            },
+        ],
+    },
+    'svg.elements.circle.fill.context-fill': {
+        featureId: 'svg.elements.circle.fill.context-fill',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for context-fill and context-stroke (svg.elements.circle.fill.context-fill)',
+                payload: {},
+            },
+        ],
+    },
+    'css.types.color.contrast-color': {
+        featureId: 'css.types.color.contrast-color',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for contrast-color() (css.types.color.contrast-color)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLMediaElement.controlsList': {
+        featureId: 'api.HTMLMediaElement.controlsList',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for controlslist (api.HTMLMediaElement.controlsList)',
+                payload: {},
+            },
+        ],
+    },
+    'api.CookieChangeEvent': {
+        featureId: 'api.CookieChangeEvent',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Cookie store (api.CookieChangeEvent)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.corner-block-end-shape': {
+        featureId: 'css.properties.corner-block-end-shape',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for corner-shape (css.properties.corner-block-end-shape)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.counter-reset.reversed': {
+        featureId: 'css.properties.counter-reset.reversed',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Reversed counter-reset (css.properties.counter-reset.reversed)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.image-rendering.crisp-edges': {
+        featureId: 'css.properties.image-rendering.crisp-edges',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for crisp-edges (css.properties.image-rendering.crisp-edges)',
+                payload: {},
+            },
+        ],
+    },
+    'api.CSSViewTransitionRule': {
+        featureId: 'api.CSSViewTransitionRule',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Cross-document view transitions (api.CSSViewTransitionRule)',
+                payload: {},
+            },
+        ],
+    },
+    'css.types.image.cross-fade': {
+        featureId: 'css.types.image.cross-fade',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for cross-fade() (css.types.image.cross-fade)',
+                payload: {},
+            },
+        ],
+    },
+    'javascript.statements.import.import_attributes.type_css': {
+        featureId: 'javascript.statements.import.import_attributes.type_css',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for CSS import attributes (javascript.statements.import.import_attributes.type_css)',
+                payload: {},
+            },
+        ],
+    },
+    'api.CSSPrimitiveValue': {
+        featureId: 'api.CSSPrimitiveValue',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for CSS object model (DOM level 2) (api.CSSPrimitiveValue)',
+                payload: {},
+            },
+        ],
+    },
+    'api.CSSImageValue': {
+        featureId: 'api.CSSImageValue',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for CSS typed object model (api.CSSImageValue)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.cursor': {
+        featureId: 'css.properties.cursor',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Cursor styles (css.properties.cursor)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.text-overflow.string': {
+        featureId: 'css.properties.text-overflow.string',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Custom ellipses (css.properties.text-overflow.string)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.appearance.base-select': {
+        featureId: 'css.properties.appearance.base-select',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Customizable <select> (css.properties.appearance.base-select)',
+                payload: {},
+            },
+        ],
+    },
+    'api.CustomElementRegistry.builtin_element_support': {
+        featureId: 'api.CustomElementRegistry.builtin_element_support',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Customized built-in elements (api.CustomElementRegistry.builtin_element_support)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLDataListElement': {
+        featureId: 'api.HTMLDataListElement',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for <datalist> (api.HTMLDataListElement)',
+                payload: {},
+            },
+        ],
+    },
+    'javascript.builtins.Date.getYear': {
+        featureId: 'javascript.builtins.Date.getYear',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for getYear() and setYear() (javascript.builtins.Date.getYear)',
+                payload: {},
+            },
+        ],
+    },
+    'javascript.builtins.Date.toGMTString': {
+        featureId: 'javascript.builtins.Date.toGMTString',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for toGMTString() (javascript.builtins.Date.toGMTString)',
+                payload: {},
+            },
+        ],
+    },
+    'css.selectors.details-content': {
+        featureId: 'css.selectors.details-content',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for ::details-content (css.selectors.details-content)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Navigator.deviceMemory': {
+        featureId: 'api.Navigator.deviceMemory',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Device memory (api.Navigator.deviceMemory)',
+                payload: {},
+            },
+        ],
+    },
+    'api.DevicePosture': {
+        featureId: 'api.DevicePosture',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Device posture (api.DevicePosture)',
+                payload: {},
+            },
+        ],
+    },
+    'css.at-rules.media.device-aspect-ratio': {
+        featureId: 'css.at-rules.media.device-aspect-ratio',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Device media queries (css.at-rules.media.device-aspect-ratio)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Window.devicePixelRatio': {
+        featureId: 'api.Window.devicePixelRatio',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for devicePixelRatio (api.Window.devicePixelRatio)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLDialogElement.closedBy': {
+        featureId: 'api.HTMLDialogElement.closedBy',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for <dialog closedby> (api.HTMLDialogElement.closedBy)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Window.getDigitalGoodsService': {
+        featureId: 'api.Window.getDigitalGoodsService',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Digital goods (api.Window.getDigitalGoodsService)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.content-visibility.is_transitionable': {
+        featureId: 'css.properties.content-visibility.is_transitionable',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for display animation (css.properties.content-visibility.is_transitionable)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.display.contents': {
+        featureId: 'css.properties.display.contents',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for display: contents (css.properties.display.contents)',
+                payload: {},
+            },
+        ],
+    },
+    'css.at-rules.media.display-mode': {
+        featureId: 'css.at-rules.media.display-mode',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for display-mode media query (css.at-rules.media.display-mode)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.display.ruby': {
+        featureId: 'css.properties.display.ruby',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for display: ruby (css.properties.display.ruby)',
+                payload: {},
+            },
+        ],
+    },
+    'api.CaretPosition': {
+        featureId: 'api.CaretPosition',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for document.caretPositionFromPoint() (api.CaretPosition)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Document.alinkColor': {
+        featureId: 'api.Document.alinkColor',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Document colors (api.Document.alinkColor)',
+                payload: {},
+            },
+        ],
+    },
+    'api.DocumentPictureInPicture': {
+        featureId: 'api.DocumentPictureInPicture',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Document picture-in-picture (api.DocumentPictureInPicture)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Document.close': {
+        featureId: 'api.Document.close',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for document.write() (api.Document.close)',
+                payload: {},
+            },
+        ],
+    },
+    'http.headers.Early-Data': {
+        featureId: 'http.headers.Early-Data',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Early data (http.headers.Early-Data)',
+                payload: {},
+            },
+        ],
+    },
+    'api.CharacterBoundsUpdateEvent': {
+        featureId: 'api.CharacterBoundsUpdateEvent',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for EditContext (api.CharacterBoundsUpdateEvent)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.background-image.element': {
+        featureId: 'css.properties.background-image.element',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for element() (css.properties.background-image.element)',
+                payload: {},
+            },
+        ],
+    },
+    'api.BrowserCaptureMediaStreamTrack.restrictTo': {
+        featureId: 'api.BrowserCaptureMediaStreamTrack.restrictTo',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Element capture (api.BrowserCaptureMediaStreamTrack.restrictTo)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Element.elementTiming': {
+        featureId: 'api.Element.elementTiming',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Element timing (api.Element.elementTiming)',
+                payload: {},
+            },
+        ],
+    },
+    'javascript.builtins.escape': {
+        featureId: 'javascript.builtins.escape',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for escape() and unescape() (javascript.builtins.escape)',
+                payload: {},
+            },
+        ],
+    },
+    'api.EventCounts': {
+        featureId: 'api.EventCounts',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Event timing (api.EventCounts)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Document.execCommand': {
+        featureId: 'api.Document.execCommand',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for execCommand() (api.Document.execCommand)',
+                payload: {},
+            },
+        ],
+    },
+    'javascript.builtins.AsyncDisposableStack': {
+        featureId: 'javascript.builtins.AsyncDisposableStack',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Explicit resource management (javascript.builtins.AsyncDisposableStack)',
+                payload: {},
+            },
+        ],
+    },
+    'api.EXT_disjoint_timer_query': {
+        featureId: 'api.EXT_disjoint_timer_query',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for EXT_disjoint_timer_query WebGL extension (api.EXT_disjoint_timer_query)',
+                payload: {},
+            },
+        ],
+    },
+    'api.EXT_float_blend': {
+        featureId: 'api.EXT_float_blend',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for EXT_float_blend WebGL extension (api.EXT_float_blend)',
+                payload: {},
+            },
+        ],
+    },
+    'api.EXT_frag_depth': {
+        featureId: 'api.EXT_frag_depth',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for EXT_frag_depth WebGL extension (api.EXT_frag_depth)',
+                payload: {},
+            },
+        ],
+    },
+    'api.EXT_shader_texture_lod': {
+        featureId: 'api.EXT_shader_texture_lod',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for EXT_shader_texture_lod WebGL extension (api.EXT_shader_texture_lod)',
+                payload: {},
+            },
+        ],
+    },
+    'api.EXT_texture_compression_bptc': {
+        featureId: 'api.EXT_texture_compression_bptc',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for EXT_texture_compression_bptc WebGL extension (api.EXT_texture_compression_bptc)',
+                payload: {},
+            },
+        ],
+    },
+    'api.EXT_texture_compression_rgtc': {
+        featureId: 'api.EXT_texture_compression_rgtc',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for EXT_texture_compression_rgtc WebGL extension (api.EXT_texture_compression_rgtc)',
+                payload: {},
+            },
+        ],
+    },
+    'api.EXT_texture_norm16': {
+        featureId: 'api.EXT_texture_norm16',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for EXT_texture_norm16 WebGL extension (api.EXT_texture_norm16)',
+                payload: {},
+            },
+        ],
+    },
+    'api.External': {
+        featureId: 'api.External',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for window.external (api.External)',
+                payload: {},
+            },
+        ],
+    },
+    'api.EyeDropper': {
+        featureId: 'api.EyeDropper',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Eyedropper (api.EyeDropper)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLMediaElement.fastSeek': {
+        featureId: 'api.HTMLMediaElement.fastSeek',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for fastSeek() (api.HTMLMediaElement.fastSeek)',
+                payload: {},
+            },
+        ],
+    },
+    'api.CredentialsContainer.get.identity_option': {
+        featureId: 'api.CredentialsContainer.get.identity_option',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Federated credential management (api.CredentialsContainer.get.identity_option)',
+                payload: {},
+            },
+        ],
+    },
+    'api.FederatedCredential': {
+        featureId: 'api.FederatedCredential',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Federated credentials (api.FederatedCredential)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Fence': {
+        featureId: 'api.Fence',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for <fencedframe> (api.Fence)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Request.body': {
+        featureId: 'api.Request.body',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Fetch upload streams (api.Request.body)',
+                payload: {},
+            },
+        ],
+    },
+    'api.FetchLaterResult': {
+        featureId: 'api.FetchLaterResult',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for fetchLater (api.FetchLaterResult)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.field-sizing': {
+        featureId: 'css.properties.field-sizing',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for field-sizing (css.properties.field-sizing)',
+                payload: {},
+            },
+        ],
+    },
+    'api.FileSystemDirectoryHandle.@@asyncIterator': {
+        featureId: 'api.FileSystemDirectoryHandle.@@asyncIterator',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for File system access (api.FileSystemDirectoryHandle.@@asyncIterator)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.block-size.fit-content_function': {
+        featureId: 'css.properties.block-size.fit-content_function',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for fit-content() (css.properties.block-size.fit-content_function)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.font-family.math': {
+        featureId: 'css.properties.font-family.math',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Math font family (css.properties.font-family.math)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.font-family.ui-monospace': {
+        featureId: 'css.properties.font-family.ui-monospace',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for UI fonts (css.properties.font-family.ui-monospace)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.font-language-override': {
+        featureId: 'css.properties.font-language-override',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for font-language-override (css.properties.font-language-override)',
+                payload: {},
+            },
+        ],
+    },
+    'api.FontFace.ascentOverride': {
+        featureId: 'api.FontFace.ascentOverride',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Font metric overrides (api.FontFace.ascentOverride)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.font-palette.animation_computed': {
+        featureId: 'css.properties.font-palette.animation_computed',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for font-palette animation (css.properties.font-palette.animation_computed)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.font-stretch': {
+        featureId: 'css.properties.font-stretch',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for font-stretch (css.properties.font-stretch)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.font-synthesis-position': {
+        featureId: 'css.properties.font-synthesis-position',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for font-synthesis-position (css.properties.font-synthesis-position)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.font-variant-emoji': {
+        featureId: 'css.properties.font-variant-emoji',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for font-variant-emoji (css.properties.font-variant-emoji)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.font-variant-position': {
+        featureId: 'css.properties.font-variant-position',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for font-variant-position (css.properties.font-variant-position)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.font-width': {
+        featureId: 'css.properties.font-width',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for font-width (css.properties.font-width)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Document.exitFullscreen': {
+        featureId: 'api.Document.exitFullscreen',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Fullscreen API (api.Document.exitFullscreen)',
+                payload: {},
+            },
+        ],
+    },
+    'unknown-bcd:function': {
+        featureId: 'unknown-bcd:function',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for @function (unknown-bcd:function)',
+                payload: {},
+            },
+        ],
+    },
+    'javascript.builtins.Function.arguments': {
+        featureId: 'javascript.builtins.Function.arguments',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Function caller and arguments (javascript.builtins.Function.arguments)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Gamepad.hapticActuators': {
+        featureId: 'api.Gamepad.hapticActuators',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Gamepad haptic feedback (api.Gamepad.hapticActuators)',
+                payload: {},
+            },
+        ],
+    },
+    'api.GamepadButton.touched': {
+        featureId: 'api.GamepadButton.touched',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Gamepad touch buttons (api.GamepadButton.touched)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Gamepad.hand': {
+        featureId: 'api.Gamepad.hand',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Gamepad VR hands and poses (api.Gamepad.hand)',
+                payload: {},
+            },
+        ],
+    },
+    'unknown-bcd:gap-decorations': {
+        featureId: 'unknown-bcd:gap-decorations',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Gap decorations (unknown-bcd:gap-decorations)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Document.getBoxQuads': {
+        featureId: 'api.Document.getBoxQuads',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for getBoxQuads() (api.Document.getBoxQuads)',
+                payload: {},
+            },
+        ],
+    },
+    'javascript.builtins.Map.getOrInsert': {
+        featureId: 'javascript.builtins.Map.getOrInsert',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Map getOrInsert() (javascript.builtins.Map.getOrInsert)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.glyph-orientation-vertical': {
+        featureId: 'css.properties.glyph-orientation-vertical',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for glyph-orientation-vertical (css.properties.glyph-orientation-vertical)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Navigator.globalPrivacyControl': {
+        featureId: 'api.Navigator.globalPrivacyControl',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Global privacy control (api.Navigator.globalPrivacyControl)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Gyroscope': {
+        featureId: 'api.Gyroscope',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Gyroscope (api.Gyroscope)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.hanging-punctuation': {
+        featureId: 'css.properties.hanging-punctuation',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Hanging punctuation (css.properties.hanging-punctuation)',
+                payload: {},
+            },
+        ],
+    },
+    'css.selectors.has-slotted': {
+        featureId: 'css.selectors.has-slotted',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for :has-slotted (css.selectors.has-slotted)',
+                payload: {},
+            },
+        ],
+    },
+    'css.selectors.heading': {
+        featureId: 'css.selectors.heading',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Heading pseudo-classes (css.selectors.heading)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Element.beforematch_event': {
+        featureId: 'api.Element.beforematch_event',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for hidden="until-found" (api.Element.beforematch_event)',
+                payload: {},
+            },
+        ],
+    },
+    'api.CSS.highlights_static': {
+        featureId: 'api.CSS.highlights_static',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Custom highlights (api.CSS.highlights_static)',
+                payload: {},
+            },
+        ],
+    },
+    'css.selectors.host-context': {
+        featureId: 'css.selectors.host-context',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for :host-context() (css.selectors.host-context)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLInputElement.capture': {
+        featureId: 'api.HTMLInputElement.capture',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for HTML media capture (api.HTMLInputElement.capture)',
+                payload: {},
+            },
+        ],
+    },
+    'javascript.builtins.String.anchor': {
+        featureId: 'javascript.builtins.String.anchor',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for HTML wrapper methods (javascript.builtins.String.anchor)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.hyphenate-limit-chars': {
+        featureId: 'css.properties.hyphenate-limit-chars',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Hyphenate limit chars (css.properties.hyphenate-limit-chars)',
+                payload: {},
+            },
+        ],
+    },
+    'api.IdleDetector': {
+        featureId: 'api.IdleDetector',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Idle detection (api.IdleDetector)',
+                payload: {},
+            },
+        ],
+    },
+    'css.types.if': {
+        featureId: 'css.types.if',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for if() (css.types.if)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLIFrameElement.credentialless': {
+        featureId: 'api.HTMLIFrameElement.credentialless',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Credentialless iframes (api.HTMLIFrameElement.credentialless)',
+                payload: {},
+            },
+        ],
+    },
+    'unknown-bcd:image-function': {
+        featureId: 'unknown-bcd:image-function',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for image() (unknown-bcd:image-function)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.ime-mode': {
+        featureId: 'css.properties.ime-mode',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for ime-mode (css.properties.ime-mode)',
+                payload: {},
+            },
+        ],
+    },
+    'javascript.statements.import.import_assertions': {
+        featureId: 'javascript.statements.import.import_assertions',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Import assertions (javascript.statements.import.import_assertions)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.initial-letter': {
+        featureId: 'css.properties.initial-letter',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for initial-letter (css.properties.initial-letter)',
+                payload: {},
+            },
+        ],
+    },
+    'api.DelegatedInkTrailPresenter': {
+        featureId: 'api.DelegatedInkTrailPresenter',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Ink (api.DelegatedInkTrailPresenter)',
+                payload: {},
+            },
+        ],
+    },
+    'html.elements.input.type_color': {
+        featureId: 'html.elements.input.type_color',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for <input type="color"> (html.elements.input.type_color)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLInputElement.alpha': {
+        featureId: 'api.HTMLInputElement.alpha',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for `alpha` and `colorspace` attributes for `<input type=color>` (api.HTMLInputElement.alpha)',
+                payload: {},
+            },
+        ],
+    },
+    'api.MediaStreamTrackProcessor': {
+        featureId: 'api.MediaStreamTrackProcessor',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Insertable streams for MediaStreamTrack (api.MediaStreamTrackProcessor)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.interactivity': {
+        featureId: 'css.properties.interactivity',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for interactivity (css.properties.interactivity)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.interpolate-size': {
+        featureId: 'css.properties.interpolate-size',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for interpolate-size (css.properties.interpolate-size)',
+                payload: {},
+            },
+        ],
+    },
+    'unknown-bcd:intersection-observer-v2': {
+        featureId: 'unknown-bcd:intersection-observer-v2',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Intersection observer visibility tracking (unknown-bcd:intersection-observer-v2)',
+                payload: {},
+            },
+        ],
+    },
+    'javascript.builtins.Intl.Locale.getCalendars': {
+        featureId: 'javascript.builtins.Intl.Locale.getCalendars',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Intl.Locale info (javascript.builtins.Intl.Locale.getCalendars)',
+                payload: {},
+            },
+        ],
+    },
+    'css.at-rules.media.inverted-colors': {
+        featureId: 'css.at-rules.media.inverted-colors',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for inverted-colors media query (css.at-rules.media.inverted-colors)',
+                payload: {},
+            },
+        ],
+    },
+    'api.CommandEvent': {
+        featureId: 'api.CommandEvent',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Invoker commands (api.CommandEvent)',
+                payload: {},
+            },
+        ],
+    },
+    'javascript.builtins.Error.isError': {
+        featureId: 'javascript.builtins.Error.isError',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Error.isError() (javascript.builtins.Error.isError)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Navigator.scheduling': {
+        featureId: 'api.Navigator.scheduling',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for isInputPending() (api.Navigator.scheduling)',
+                payload: {},
+            },
+        ],
+    },
+    'unknown-bcd:jpegxl': {
+        featureId: 'unknown-bcd:jpegxl',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for JPEG XL (unknown-bcd:jpegxl)',
+                payload: {},
+            },
+        ],
+    },
+    'api.ServiceWorker.ecmascript_modules': {
+        featureId: 'api.ServiceWorker.ecmascript_modules',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for JavaScript modules in service workers (api.ServiceWorker.ecmascript_modules)',
+                payload: {},
+            },
+        ],
+    },
+    'api.SharedWorker.SharedWorker.ecmascript_modules': {
+        featureId: 'api.SharedWorker.SharedWorker.ecmascript_modules',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for JavaScript modules in shared workers (api.SharedWorker.SharedWorker.ecmascript_modules)',
+                payload: {},
+            },
+        ],
+    },
+    'javascript.builtins.JSON.isRawJSON': {
+        featureId: 'javascript.builtins.JSON.isRawJSON',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for JSON source text access (javascript.builtins.JSON.isRawJSON)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Keyboard': {
+        featureId: 'api.Keyboard',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Keyboard lock (api.Keyboard)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Keyboard.getLayoutMap': {
+        featureId: 'api.Keyboard.getLayoutMap',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Keyboard map (api.Keyboard.getLayoutMap)',
+                payload: {},
+            },
+        ],
+    },
+    'api.KHR_parallel_shader_compile': {
+        featureId: 'api.KHR_parallel_shader_compile',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for KHR_parallel_shader_compile WebGL extension (api.KHR_parallel_shader_compile)',
+                payload: {},
+            },
+        ],
+    },
+    'api.LargestContentfulPaint': {
+        featureId: 'api.LargestContentfulPaint',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Largest contentful paint (LCP) (api.LargestContentfulPaint)',
+                payload: {},
+            },
+        ],
+    },
+    'api.LayoutShift': {
+        featureId: 'api.LayoutShift',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Layout instability (api.LayoutShift)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.line-clamp': {
+        featureId: 'css.properties.line-clamp',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for line-clamp (css.properties.line-clamp)',
+                payload: {},
+            },
+        ],
+    },
+    'html.elements.link.rel.expect': {
+        featureId: 'html.elements.link.rel.expect',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for <link rel="expect"> (html.elements.link.rel.expect)',
+                payload: {},
+            },
+        ],
+    },
+    'api.PerformanceResourceTiming.deliveryType.navigational-prefetch': {
+        featureId: 'api.PerformanceResourceTiming.deliveryType.navigational-prefetch',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for <link rel="prefetch"> (api.PerformanceResourceTiming.deliveryType.navigational-prefetch)',
+                payload: {},
+            },
+        ],
+    },
+    'api.FontData': {
+        featureId: 'api.FontData',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Local fonts (api.FontData)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Request.targetAddressSpace': {
+        featureId: 'api.Request.targetAddressSpace',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Local network access (api.Request.targetAddressSpace)',
+                payload: {},
+            },
+        ],
+    },
+    'api.PerformanceLongAnimationFrameTiming': {
+        featureId: 'api.PerformanceLongAnimationFrameTiming',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Long animation frames (api.PerformanceLongAnimationFrameTiming)',
+                payload: {},
+            },
+        ],
+    },
+    'api.PerformanceLongTaskTiming': {
+        featureId: 'api.PerformanceLongTaskTiming',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Long tasks (api.PerformanceLongTaskTiming)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Magnetometer': {
+        featureId: 'api.Magnetometer',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Magnetometer (api.Magnetometer)',
+                payload: {},
+            },
+        ],
+    },
+    'api.ManagedMediaSource': {
+        featureId: 'api.ManagedMediaSource',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Managed media source (api.ManagedMediaSource)',
+                payload: {},
+            },
+        ],
+    },
+    'html.elements.link.rel.manifest': {
+        featureId: 'html.elements.link.rel.manifest',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Web app manifest (html.elements.link.rel.manifest)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.margin-trim': {
+        featureId: 'css.properties.margin-trim',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for margin-trim (css.properties.margin-trim)',
+                payload: {},
+            },
+        ],
+    },
+    'css.selectors.marker': {
+        featureId: 'css.selectors.marker',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for ::marker (css.selectors.marker)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.mask-border': {
+        featureId: 'css.properties.mask-border',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for mask-border (css.properties.mask-border)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.grid-template-columns.masonry': {
+        featureId: 'css.properties.grid-template-columns.masonry',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Masonry (css.properties.grid-template-columns.masonry)',
+                payload: {},
+            },
+        ],
+    },
+    'javascript.builtins.Math.sumPrecise': {
+        featureId: 'javascript.builtins.Math.sumPrecise',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Math.sumPrecise() (javascript.builtins.Math.sumPrecise)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Performance.measureUserAgentSpecificMemory': {
+        featureId: 'api.Performance.measureUserAgentSpecificMemory',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Memory measurement (api.Performance.measureUserAgentSpecificMemory)',
+                payload: {},
+            },
+        ],
+    },
+    'css.selectors.buffering': {
+        featureId: 'css.selectors.buffering',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Media element pseudo-classes (css.selectors.buffering)',
+                payload: {},
+            },
+        ],
+    },
+    'api.ChapterInformation': {
+        featureId: 'api.ChapterInformation',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Media session (api.ChapterInformation)',
+                payload: {},
+            },
+        ],
+    },
+    'api.AudioTrack.sourceBuffer': {
+        featureId: 'api.AudioTrack.sourceBuffer',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Media source (api.AudioTrack.sourceBuffer)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLMediaElement.controller': {
+        featureId: 'api.HTMLMediaElement.controller',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for MediaController (api.HTMLMediaElement.controller)',
+                payload: {},
+            },
+        ],
+    },
+    'html.elements.meta.name.application-title': {
+        featureId: 'html.elements.meta.name.application-title',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for <meta name="application-title"> (html.elements.meta.name.application-title)',
+                payload: {},
+            },
+        ],
+    },
+    'html.elements.meta.name.theme-color': {
+        featureId: 'html.elements.meta.name.theme-color',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for <meta name="theme-color"> (html.elements.meta.name.theme-color)',
+                payload: {},
+            },
+        ],
+    },
+    'api.CustomElementRegistry.define.connectedMoveCallback_lifecycle_callback': {
+        featureId: 'api.CustomElementRegistry.define.connectedMoveCallback_lifecycle_callback',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for moveBefore() (api.CustomElementRegistry.define.connectedMoveCallback_lifecycle_callback)',
+                payload: {},
+            },
+        ],
+    },
+    'api.MutationEvent': {
+        featureId: 'api.MutationEvent',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Mutation events (api.MutationEvent)',
+                payload: {},
+            },
+        ],
+    },
+    'api.NavigateEvent': {
+        featureId: 'api.NavigateEvent',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Navigation API (api.NavigateEvent)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Navigator.connection': {
+        featureId: 'api.Navigator.connection',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Network Information (api.Navigator.connection)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Document.hasUnpartitionedCookieAccess': {
+        featureId: 'api.Document.hasUnpartitionedCookieAccess',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Non-cookie storage access (api.Document.hasUnpartitionedCookieAccess)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Notification': {
+        featureId: 'api.Notification',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Notifications (api.Notification)',
+                payload: {},
+            },
+        ],
+    },
+    'api.CSS.Hz_static': {
+        featureId: 'api.CSS.Hz_static',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Numeric factory functions (api.CSS.Hz_static)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.object-view-box': {
+        featureId: 'css.properties.object-view-box',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for object-view-box (css.properties.object-view-box)',
+                payload: {},
+            },
+        ],
+    },
+    'api.EventTarget.when': {
+        featureId: 'api.EventTarget.when',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Observable (api.EventTarget.when)',
+                payload: {},
+            },
+        ],
+    },
+    'api.OES_texture_half_float_linear': {
+        featureId: 'api.OES_texture_half_float_linear',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for OES_texture_half_float_linear WebGL extension (api.OES_texture_half_float_linear)',
+                payload: {},
+            },
+        ],
+    },
+    'css.selectors.open': {
+        featureId: 'css.selectors.open',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for :open (css.selectors.open)',
+                payload: {},
+            },
+        ],
+    },
+    'api.AbsoluteOrientationSensor': {
+        featureId: 'api.AbsoluteOrientationSensor',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Orientation Sensor (api.AbsoluteOrientationSensor)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.overflow-anchor': {
+        featureId: 'css.properties.overflow-anchor',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for overflow-anchor (css.properties.overflow-anchor)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.overflow-clip-margin': {
+        featureId: 'css.properties.overflow-clip-margin',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for overflow-clip-margin (css.properties.overflow-clip-margin)',
+                payload: {},
+            },
+        ],
+    },
+    'css.types.overflow.overlay': {
+        featureId: 'css.types.overflow.overlay',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for overflow: overlay (css.types.overflow.overlay)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.overlay': {
+        featureId: 'css.properties.overlay',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for overlay (css.properties.overlay)',
+                payload: {},
+            },
+        ],
+    },
+    'api.OVR_multiview2': {
+        featureId: 'api.OVR_multiview2',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for OVR_multiview2 WebGL extension (api.OVR_multiview2)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.page-break-after': {
+        featureId: 'css.properties.page-break-after',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Page break aliases (css.properties.page-break-after)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Document.freeze_event': {
+        featureId: 'api.Document.freeze_event',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Page lifecycle (api.Document.freeze_event)',
+                payload: {},
+            },
+        ],
+    },
+    'css.at-rules.page.page-orientation': {
+        featureId: 'css.at-rules.page.page-orientation',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for page-orientation (css.at-rules.page.page-orientation)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.page': {
+        featureId: 'css.properties.page',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Page selectors (css.properties.page)',
+                payload: {},
+            },
+        ],
+    },
+    'api.VisibilityStateEntry': {
+        featureId: 'api.VisibilityStateEntry',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Page visibility state (api.VisibilityStateEntry)',
+                payload: {},
+            },
+        ],
+    },
+    'api.CSS.paintWorklet_static': {
+        featureId: 'api.CSS.paintWorklet_static',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for paint() (api.CSS.paintWorklet_static)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.paint-order': {
+        featureId: 'css.properties.paint-order',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for paint-order (css.properties.paint-order)',
+                payload: {},
+            },
+        ],
+    },
+    'api.PerformancePaintTiming': {
+        featureId: 'api.PerformancePaintTiming',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Paint timing (api.PerformancePaintTiming)',
+                payload: {},
+            },
+        ],
+    },
+    'api.CookieStore.delete.partitioned_option': {
+        featureId: 'api.CookieStore.delete.partitioned_option',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Partitioned cookies (api.CookieStore.delete.partitioned_option)',
+                payload: {},
+            },
+        ],
+    },
+    'api.PasswordCredential': {
+        featureId: 'api.PasswordCredential',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Password credentials (api.PasswordCredential)',
+                payload: {},
+            },
+        ],
+    },
+    'css.types.basic-shape.path': {
+        featureId: 'css.types.basic-shape.path',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for path() (css.types.basic-shape.path)',
+                payload: {},
+            },
+        ],
+    },
+    'api.CanMakePaymentEvent': {
+        featureId: 'api.CanMakePaymentEvent',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Payment handler (api.CanMakePaymentEvent)',
+                payload: {},
+            },
+        ],
+    },
+    'api.PaymentMethodChangeEvent': {
+        featureId: 'api.PaymentMethodChangeEvent',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Payment request (api.PaymentMethodChangeEvent)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Performance.navigation': {
+        featureId: 'api.Performance.navigation',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for PerformanceTiming and PerformanceNavigation (api.Performance.navigation)',
+                payload: {},
+            },
+        ],
+    },
+    'api.PeriodicSyncEvent': {
+        featureId: 'api.PeriodicSyncEvent',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Periodic background sync (api.PeriodicSyncEvent)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Document.exitPictureInPicture': {
+        featureId: 'api.Document.exitPictureInPicture',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Picture-in-picture (video) (api.Document.exitPictureInPicture)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLAnchorElement.ping': {
+        featureId: 'api.HTMLAnchorElement.ping',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for ping (api.HTMLAnchorElement.ping)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Document.exitPointerLock': {
+        featureId: 'api.Document.exitPointerLock',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Pointer lock (api.Document.exitPointerLock)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLElement.popover.hint': {
+        featureId: 'api.HTMLElement.popover.hint',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for popover="hint" (api.HTMLElement.popover.hint)',
+                payload: {},
+            },
+        ],
+    },
+    'unknown-bcd:portal': {
+        featureId: 'unknown-bcd:portal',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Portals (unknown-bcd:portal)',
+                payload: {},
+            },
+        ],
+    },
+    'css.at-rules.media.prefers-reduced-data': {
+        featureId: 'css.at-rules.media.prefers-reduced-data',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for prefers-reduced-data media query (css.at-rules.media.prefers-reduced-data)',
+                payload: {},
+            },
+        ],
+    },
+    'css.at-rules.media.prefers-reduced-transparency': {
+        featureId: 'css.at-rules.media.prefers-reduced-transparency',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for prefers-reduced-transparency media query (css.at-rules.media.prefers-reduced-transparency)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Navigator.presentation': {
+        featureId: 'api.Navigator.presentation',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Presentation API (api.Navigator.presentation)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLAnchorElement.attributionSourceId': {
+        featureId: 'api.HTMLAnchorElement.attributionSourceId',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Private click measurement (api.HTMLAnchorElement.attributionSourceId)',
+                payload: {},
+            },
+        ],
+    },
+    'http.mixed-content.private_network_access': {
+        featureId: 'http.mixed-content.private_network_access',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Private network access (http.mixed-content.private_network_access)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Profiler': {
+        featureId: 'api.Profiler',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Profiler (api.Profiler)',
+                payload: {},
+            },
+        ],
+    },
+    'javascript.builtins.Object.proto': {
+        featureId: 'javascript.builtins.Object.proto',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for __proto__ (javascript.builtins.Object.proto)',
+                payload: {},
+            },
+        ],
+    },
+    'css.types.length.rcap': {
+        featureId: 'css.types.length.rcap',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for rcap unit (css.types.length.rcap)',
+                payload: {},
+            },
+        ],
+    },
+    'css.types.length.rch': {
+        featureId: 'css.types.length.rch',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for rch unit (css.types.length.rch)',
+                payload: {},
+            },
+        ],
+    },
+    'api.ReadableByteStreamController': {
+        featureId: 'api.ReadableByteStreamController',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Readable byte streams (api.ReadableByteStreamController)',
+                payload: {},
+            },
+        ],
+    },
+    'api.ReadableStream.from_static': {
+        featureId: 'api.ReadableStream.from_static',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for ReadableStream.from() (api.ReadableStream.from_static)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.reading-flow': {
+        featureId: 'css.properties.reading-flow',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for reading-flow (css.properties.reading-flow)',
+                payload: {},
+            },
+        ],
+    },
+    'javascript.builtins.RegExp.compile': {
+        featureId: 'javascript.builtins.RegExp.compile',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for RegExp compile() (javascript.builtins.RegExp.compile)',
+                payload: {},
+            },
+        ],
+    },
+    'javascript.builtins.RegExp.input': {
+        featureId: 'javascript.builtins.RegExp.input',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for RegExp static properties (javascript.builtins.RegExp.input)',
+                payload: {},
+            },
+        ],
+    },
+    'api.BrowserCaptureMediaStreamTrack': {
+        featureId: 'api.BrowserCaptureMediaStreamTrack',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Region capture (api.BrowserCaptureMediaStreamTrack)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Navigator.registerProtocolHandler': {
+        featureId: 'api.Navigator.registerProtocolHandler',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for registerProtocolHandler (api.Navigator.registerProtocolHandler)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLMediaElement.disableRemotePlayback': {
+        featureId: 'api.HTMLMediaElement.disableRemotePlayback',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Remote playback (api.HTMLMediaElement.disableRemotePlayback)',
+                payload: {},
+            },
+        ],
+    },
+    'api.DeprecationReportBody': {
+        featureId: 'api.DeprecationReportBody',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Reporting API (api.DeprecationReportBody)',
+                payload: {},
+            },
+        ],
+    },
+    'api.IdleDeadline': {
+        featureId: 'api.IdleDeadline',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for requestIdleCallback() (api.IdleDeadline)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.resize': {
+        featureId: 'css.properties.resize',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for resize (CSS property) (css.properties.resize)',
+                payload: {},
+            },
+        ],
+    },
+    'css.types.length.rex': {
+        featureId: 'css.types.length.rex',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for rex unit (css.types.length.rex)',
+                payload: {},
+            },
+        ],
+    },
+    'unknown-bcd:rhythmic-sizing': {
+        featureId: 'unknown-bcd:rhythmic-sizing',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Rhythmic sizing (unknown-bcd:rhythmic-sizing)',
+                payload: {},
+            },
+        ],
+    },
+    'css.types.length.ric': {
+        featureId: 'css.types.length.ric',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for ric unit (css.types.length.ric)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.ruby-overhang': {
+        featureId: 'css.properties.ruby-overhang',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for ruby-overhang (css.properties.ruby-overhang)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Document.parseHTML_static': {
+        featureId: 'api.Document.parseHTML_static',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Sanitizer API (api.Document.parseHTML_static)',
+                payload: {},
+            },
+        ],
+    },
+    'api.NetworkInformation.saveData': {
+        featureId: 'api.NetworkInformation.saveData',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Save-Data (api.NetworkInformation.saveData)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Scheduler': {
+        featureId: 'api.Scheduler',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Scheduler API (api.Scheduler)',
+                payload: {},
+            },
+        ],
+    },
+    'api.CSSScopeRule': {
+        featureId: 'api.CSSScopeRule',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for @scope (api.CSSScopeRule)',
+                payload: {},
+            },
+        ],
+    },
+    'api.CustomElementRegistry.CustomElementRegistry': {
+        featureId: 'api.CustomElementRegistry.CustomElementRegistry',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Scoped custom element registries (api.CustomElementRegistry.CustomElementRegistry)',
+                payload: {},
+            },
+        ],
+    },
+    'api.CaptureController': {
+        featureId: 'api.CaptureController',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Screen capture (api.CaptureController)',
+                payload: {},
+            },
+        ],
+    },
+    'api.ScreenOrientation.lock': {
+        featureId: 'api.ScreenOrientation.lock',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Screen orientation lock (api.ScreenOrientation.lock)',
+                payload: {},
+            },
+        ],
+    },
+    'css.selectors.scroll-button': {
+        featureId: 'css.selectors.scroll-button',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for ::scroll-button (css.selectors.scroll-button)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.animation-range': {
+        featureId: 'css.properties.animation-range',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Scroll-driven animations (css.properties.animation-range)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.scroll-initial-target': {
+        featureId: 'css.properties.scroll-initial-target',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for scroll-initial-target (css.properties.scroll-initial-target)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.scroll-marker-group': {
+        featureId: 'css.properties.scroll-marker-group',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Scroll markers (css.properties.scroll-marker-group)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Document.scrollsnapchange_event': {
+        featureId: 'api.Document.scrollsnapchange_event',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Scroll snap events (api.Document.scrollsnapchange_event)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.scrollbar-color': {
+        featureId: 'css.properties.scrollbar-color',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for scrollbar-color (css.properties.scrollbar-color)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Document.scrollend_event': {
+        featureId: 'api.Document.scrollend_event',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for scrollend (api.Document.scrollend_event)',
+                payload: {},
+            },
+        ],
+    },
+    'api.CredentialsContainer.create.publicKey_option.extensions.payment': {
+        featureId: 'api.CredentialsContainer.create.publicKey_option.extensions.payment',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Secure payment confirmation (api.CredentialsContainer.create.publicKey_option.extensions.payment)',
+                payload: {},
+            },
+        ],
+    },
+    'css.selectors.selection': {
+        featureId: 'css.selectors.selection',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for ::selection (css.selectors.selection)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Navigator.serial': {
+        featureId: 'api.Navigator.serial',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Web serial (api.Navigator.serial)',
+                payload: {},
+            },
+        ],
+    },
+    'api.DOMException.serializable_object': {
+        featureId: 'api.DOMException.serializable_object',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Serializable errors (api.DOMException.serializable_object)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Navigator.canShare': {
+        featureId: 'api.Navigator.canShare',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for navigator.share() (api.Navigator.canShare)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLIFrameElement.sharedStorageWritable': {
+        featureId: 'api.HTMLIFrameElement.sharedStorageWritable',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Shared storage (api.HTMLIFrameElement.sharedStorageWritable)',
+                payload: {},
+            },
+        ],
+    },
+    'api.SharedStorage.batchUpdate': {
+        featureId: 'api.SharedStorage.batchUpdate',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Shared storage locks (api.SharedStorage.batchUpdate)',
+                payload: {},
+            },
+        ],
+    },
+    'api.SharedWorker': {
+        featureId: 'api.SharedWorker',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Shared worker (api.SharedWorker)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLInputElement.showPicker': {
+        featureId: 'api.HTMLInputElement.showPicker',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for showPicker() for <input> (api.HTMLInputElement.showPicker)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLSelectElement.showPicker': {
+        featureId: 'api.HTMLSelectElement.showPicker',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for showPicker() for <select> (api.HTMLSelectElement.showPicker)',
+                payload: {},
+            },
+        ],
+    },
+    'css.types.sibling-count': {
+        featureId: 'css.types.sibling-count',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for sibling-count() and sibling-index() (css.types.sibling-count)',
+                payload: {},
+            },
+        ],
+    },
+    'html.elements.img.sizes.auto': {
+        featureId: 'html.elements.img.sizes.auto',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for <img sizes="auto" loading="lazy"> (html.elements.img.sizes.auto)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.image-rendering.smooth': {
+        featureId: 'css.properties.image-rendering.smooth',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for smooth (css.properties.image-rendering.smooth)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.speak': {
+        featureId: 'css.properties.speak',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for speak (css.properties.speak)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.speak-as': {
+        featureId: 'css.properties.speak-as',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for speak-as (css.properties.speak-as)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Document.prerendering': {
+        featureId: 'api.Document.prerendering',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Speculation rules (api.Document.prerendering)',
+                payload: {},
+            },
+        ],
+    },
+    'api.SpeechRecognition': {
+        featureId: 'api.SpeechRecognition',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Speech recognition (api.SpeechRecognition)',
+                payload: {},
+            },
+        ],
+    },
+    'api.SpeechGrammar': {
+        featureId: 'api.SpeechGrammar',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Speech recognition grammar (api.SpeechGrammar)',
+                payload: {},
+            },
+        ],
+    },
+    'css.selectors.grammar-error': {
+        featureId: 'css.selectors.grammar-error',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for ::spelling-error and ::grammar-error (css.selectors.grammar-error)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Navigator.storageBuckets': {
+        featureId: 'api.Navigator.storageBuckets',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Storage buckets (api.Navigator.storageBuckets)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.height.stretch': {
+        featureId: 'css.properties.height.stretch',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for stretch (css.properties.height.stretch)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Summarizer': {
+        featureId: 'api.Summarizer',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Summarizer (api.Summarizer)',
+                payload: {},
+            },
+        ],
+    },
+    'api.SVGAElement.text': {
+        featureId: 'api.SVGAElement.text',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for SVG 1.1 (discouraged) (api.SVGAElement.text)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLTableCaptionElement.align': {
+        featureId: 'api.HTMLTableCaptionElement.align',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Table styling (api.HTMLTableCaptionElement.align)',
+                payload: {},
+            },
+        ],
+    },
+    'unknown-bcd:target-within': {
+        featureId: 'unknown-bcd:target-within',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for :target-within (unknown-bcd:target-within)',
+                payload: {},
+            },
+        ],
+    },
+    'javascript.builtins.Date.toTemporalInstant': {
+        featureId: 'javascript.builtins.Date.toTemporalInstant',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Temporal (javascript.builtins.Date.toTemporalInstant)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.text-autospace': {
+        featureId: 'css.properties.text-autospace',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for text-autospace (css.properties.text-autospace)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.text-box': {
+        featureId: 'css.properties.text-box',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for text-box (css.properties.text-box)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.text-decoration-line.blink': {
+        featureId: 'css.properties.text-decoration-line.blink',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for text-decoration-line: blink (css.properties.text-decoration-line.blink)',
+                payload: {},
+            },
+        ],
+    },
+    'css.selectors.selection.text-decoration': {
+        featureId: 'css.selectors.selection.text-decoration',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for text-decoration in ::selection (css.selectors.selection.text-decoration)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.text-indent.each-line': {
+        featureId: 'css.properties.text-indent.each-line',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for text-indent: each-line (css.properties.text-indent.each-line)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.text-indent.hanging': {
+        featureId: 'css.properties.text-indent.hanging',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for text-indent: hanging (css.properties.text-indent.hanging)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.text-justify': {
+        featureId: 'css.properties.text-justify',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for text-justify (css.properties.text-justify)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.text-size-adjust': {
+        featureId: 'css.properties.text-size-adjust',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for text-size-adjust (css.properties.text-size-adjust)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.text-spacing-trim': {
+        featureId: 'css.properties.text-spacing-trim',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for text-spacing-trim (css.properties.text-spacing-trim)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.text-wrap.pretty': {
+        featureId: 'css.properties.text-wrap.pretty',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for text-wrap: pretty (css.properties.text-wrap.pretty)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.text-wrap-style': {
+        featureId: 'css.properties.text-wrap-style',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for text-wrap-style (css.properties.text-wrap-style)',
+                payload: {},
+            },
+        ],
+    },
+    'css.selectors.future': {
+        featureId: 'css.selectors.future',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Time-relative pseudo-selectors (css.selectors.future)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Element.touchcancel_event': {
+        featureId: 'api.Element.touchcancel_event',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Touch events (api.Element.touchcancel_event)',
+                payload: {},
+            },
+        ],
+    },
+    'api.ReadableStream.transferable': {
+        featureId: 'api.ReadableStream.transferable',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Transferable streams (api.ReadableStream.transferable)',
+                payload: {},
+            },
+        ],
+    },
+    'api.TransformStream.TransformStream.transformer_cancel': {
+        featureId: 'api.TransformStream.TransformStream.transformer_cancel',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for TransformStream transformer cancel() method (api.TransformStream.TransformStream.transformer_cancel)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Element.innerHTML.enforces_trusted_types': {
+        featureId: 'api.Element.innerHTML.enforces_trusted_types',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Trusted types (api.Element.innerHTML.enforces_trusted_types)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Navigator.userAgentData': {
+        featureId: 'api.Navigator.userAgentData',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for User agent client hints (api.Navigator.userAgentData)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.user-select': {
+        featureId: 'css.properties.user-select',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for user-select (css.properties.user-select)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Navigator.vibrate': {
+        featureId: 'api.Navigator.vibrate',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Vibration (api.Navigator.vibrate)',
+                payload: {},
+            },
+        ],
+    },
+    'css.at-rules.media.video-dynamic-range': {
+        featureId: 'css.at-rules.media.video-dynamic-range',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for video-dynamic-range media query (css.at-rules.media.video-dynamic-range)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.view-transition-class': {
+        featureId: 'css.properties.view-transition-class',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for view-transition-class (css.properties.view-transition-class)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.view-transition-name': {
+        featureId: 'css.properties.view-transition-name',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for View transitions (css.properties.view-transition-name)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Viewport': {
+        featureId: 'api.Viewport',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Viewport segments (api.Viewport)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLElement.virtualKeyboardPolicy': {
+        featureId: 'api.HTMLElement.virtualKeyboardPolicy',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Virtual keyboard (api.HTMLElement.virtualKeyboardPolicy)',
+                payload: {},
+            },
+        ],
+    },
+    'webdriver.classic.CreateVirtualPressureSource': {
+        featureId: 'webdriver.classic.CreateVirtualPressureSource',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Virtual pressure sources (webdriver.classic.CreateVirtualPressureSource)',
+                payload: {},
+            },
+        ],
+    },
+    'webdriver.classic.CreateVirtualSensor': {
+        featureId: 'webdriver.classic.CreateVirtualSensor',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Virtual sensors (webdriver.classic.CreateVirtualSensor)',
+                payload: {},
+            },
+        ],
+    },
+    'webassembly.exceptionsFinal': {
+        featureId: 'webassembly.exceptionsFinal',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Exception references with exnref (WebAssembly) (webassembly.exceptionsFinal)',
+                payload: {},
+            },
+        ],
+    },
+    'webassembly.memory64': {
+        featureId: 'webassembly.memory64',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Memory64 (WebAssembly) (webassembly.memory64)',
+                payload: {},
+            },
+        ],
+    },
+    'webassembly.multiMemory': {
+        featureId: 'webassembly.multiMemory',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Multi-memory (WebAssembly) (webassembly.multiMemory)',
+                payload: {},
+            },
+        ],
+    },
+    'webassembly.relaxed-SIMD': {
+        featureId: 'webassembly.relaxed-SIMD',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Relaxed-width SIMD (WebAssembly) (webassembly.relaxed-SIMD)',
+                payload: {},
+            },
+        ],
+    },
+    'webassembly.api.Module.Module.compile_options': {
+        featureId: 'webassembly.api.Module.Module.compile_options',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for String builtins (WebAssembly) (webassembly.api.Module.Module.compile_options)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Bluetooth': {
+        featureId: 'api.Bluetooth',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Web Bluetooth (api.Bluetooth)',
+                payload: {},
+            },
+        ],
+    },
+    'api.MIDIAccess': {
+        featureId: 'api.MIDIAccess',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Web MIDI (api.MIDIAccess)',
+                payload: {},
+            },
+        ],
+    },
+    'api.NDEFMessage': {
+        featureId: 'api.NDEFMessage',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Web NFC (api.NDEFMessage)',
+                payload: {},
+            },
+        ],
+    },
+    'api.CredentialsContainer.get.otp_option': {
+        featureId: 'api.CredentialsContainer.get.otp_option',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for WebOTP (api.CredentialsContainer.get.otp_option)',
+                payload: {},
+            },
+        ],
+    },
+    'api.PublicKeyCredential.signalAllAcceptedCredentials_static': {
+        featureId: 'api.PublicKeyCredential.signalAllAcceptedCredentials_static',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Web authentication signal methods (api.PublicKeyCredential.signalAllAcceptedCredentials_static)',
+                payload: {},
+            },
+        ],
+    },
+    'api.AudioData': {
+        featureId: 'api.AudioData',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for WebCodecs (api.AudioData)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Navigator.webdriver': {
+        featureId: 'api.Navigator.webdriver',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for WebDriver (api.Navigator.webdriver)',
+                payload: {},
+            },
+        ],
+    },
+    'unknown-bcd:webdriver-bidi': {
+        featureId: 'unknown-bcd:webdriver-bidi',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for WebDriver BiDi (unknown-bcd:webdriver-bidi)',
+                payload: {},
+            },
+        ],
+    },
+    'api.WEBGL_compressed_texture_etc': {
+        featureId: 'api.WEBGL_compressed_texture_etc',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for WEBGL_compressed_texture_etc WebGL extension (api.WEBGL_compressed_texture_etc)',
+                payload: {},
+            },
+        ],
+    },
+    'api.WEBGL_compressed_texture_etc1': {
+        featureId: 'api.WEBGL_compressed_texture_etc1',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for WEBGL_compressed_texture_etc1 WebGL extension (api.WEBGL_compressed_texture_etc1)',
+                payload: {},
+            },
+        ],
+    },
+    'api.WEBGL_compressed_texture_pvrtc': {
+        featureId: 'api.WEBGL_compressed_texture_pvrtc',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for WEBGL_compressed_texture_pvrtc WebGL extension (api.WEBGL_compressed_texture_pvrtc)',
+                payload: {},
+            },
+        ],
+    },
+    'api.WEBGL_compressed_texture_s3tc': {
+        featureId: 'api.WEBGL_compressed_texture_s3tc',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for WEBGL_compressed_texture_s3tc WebGL extension (api.WEBGL_compressed_texture_s3tc)',
+                payload: {},
+            },
+        ],
+    },
+    'api.WEBGL_compressed_texture_s3tc_srgb': {
+        featureId: 'api.WEBGL_compressed_texture_s3tc_srgb',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for WEBGL_compressed_texture_s3tc_srgb WebGL extension (api.WEBGL_compressed_texture_s3tc_srgb)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLCanvasElement.getContext.webgl_context.options_desynchronized_parameter': {
+        featureId: 'api.HTMLCanvasElement.getContext.webgl_context.options_desynchronized_parameter',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Desynchronized WebGL canvas (api.HTMLCanvasElement.getContext.webgl_context.options_desynchronized_parameter)',
+                payload: {},
+            },
+        ],
+    },
+    'api.WEBGL_draw_buffers': {
+        featureId: 'api.WEBGL_draw_buffers',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for WEBGL_draw_buffers WebGL extension (api.WEBGL_draw_buffers)',
+                payload: {},
+            },
+        ],
+    },
+    'api.WEBGL_multi_draw': {
+        featureId: 'api.WEBGL_multi_draw',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for WEBGL_multi_draw WebGL extension (api.WEBGL_multi_draw)',
+                payload: {},
+            },
+        ],
+    },
+    'api.WebGL2RenderingContext.bufferData.srcData_param_accepts_SharedArrayBuffer': {
+        featureId: 'api.WebGL2RenderingContext.bufferData.srcData_param_accepts_SharedArrayBuffer',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for SharedArrayBuffer in WebGL (api.WebGL2RenderingContext.bufferData.srcData_param_accepts_SharedArrayBuffer)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLCanvasElement.getContext.webgl2_context.options_desynchronized_parameter': {
+        featureId: 'api.HTMLCanvasElement.getContext.webgl2_context.options_desynchronized_parameter',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Desynchronized WebGL2 canvas (api.HTMLCanvasElement.getContext.webgl2_context.options_desynchronized_parameter)',
+                payload: {},
+            },
+        ],
+    },
+    'api.GPU': {
+        featureId: 'api.GPU',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for WebGPU (api.GPU)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HID': {
+        featureId: 'api.HID',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for WebHID (api.HID)',
+                payload: {},
+            },
+        ],
+    },
+    'api.ML': {
+        featureId: 'api.ML',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for WebNN (api.ML)',
+                payload: {},
+            },
+        ],
+    },
+    'api.DedicatedWorkerGlobalScope.rtctransform_event': {
+        featureId: 'api.DedicatedWorkerGlobalScope.rtctransform_event',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for WebRTC encoded transform (api.DedicatedWorkerGlobalScope.rtctransform_event)',
+                payload: {},
+            },
+        ],
+    },
+    'api.WebTransport': {
+        featureId: 'api.WebTransport',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for WebTransport (api.WebTransport)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Navigator.usb': {
+        featureId: 'api.Navigator.usb',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for WebUSB (api.Navigator.usb)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Gamepad.displayId': {
+        featureId: 'api.Gamepad.displayId',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for WebVR (api.Gamepad.displayId)',
+                payload: {},
+            },
+        ],
+    },
+    'api.VTTCue.lineAlign': {
+        featureId: 'api.VTTCue.lineAlign',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for WebVTT cue alignment (api.VTTCue.lineAlign)',
+                payload: {},
+            },
+        ],
+    },
+    'api.VTTCue.region': {
+        featureId: 'api.VTTCue.region',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for WebVTT regions (api.VTTCue.region)',
+                payload: {},
+            },
+        ],
+    },
+    'api.XRAnchor': {
+        featureId: 'api.XRAnchor',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Anchors (WebXR) (api.XRAnchor)',
+                payload: {},
+            },
+        ],
+    },
+    'api.XRSession.environmentBlendMode': {
+        featureId: 'api.XRSession.environmentBlendMode',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Augmented reality (api.XRSession.environmentBlendMode)',
+                payload: {},
+            },
+        ],
+    },
+    'api.XRCamera': {
+        featureId: 'api.XRCamera',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Raw camera access for WebXR (api.XRCamera)',
+                payload: {},
+            },
+        ],
+    },
+    'api.XRCPUDepthInformation': {
+        featureId: 'api.XRCPUDepthInformation',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Depth sensing (api.XRCPUDepthInformation)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Navigator.xr': {
+        featureId: 'api.Navigator.xr',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for WebXR (api.Navigator.xr)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Element.beforexrselect_event': {
+        featureId: 'api.Element.beforexrselect_event',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for DOM overlays for WebXR (api.Element.beforexrselect_event)',
+                payload: {},
+            },
+        ],
+    },
+    'api.XRInputSource.gamepad': {
+        featureId: 'api.XRInputSource.gamepad',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Gamepad (WebXR) (api.XRInputSource.gamepad)',
+                payload: {},
+            },
+        ],
+    },
+    'api.XRFrame.fillJointRadii': {
+        featureId: 'api.XRFrame.fillJointRadii',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Hand input (api.XRFrame.fillJointRadii)',
+                payload: {},
+            },
+        ],
+    },
+    'api.XRFrame.getHitTestResults': {
+        featureId: 'api.XRFrame.getHitTestResults',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Hit test (api.XRFrame.getHitTestResults)',
+                payload: {},
+            },
+        ],
+    },
+    'api.XRCompositionLayer': {
+        featureId: 'api.XRCompositionLayer',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Layers (WebXR) (api.XRCompositionLayer)',
+                payload: {},
+            },
+        ],
+    },
+    'api.XRFrame.getLightEstimate': {
+        featureId: 'api.XRFrame.getLightEstimate',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Lighting estimation (api.XRFrame.getLightEstimate)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Element.wheel_event': {
+        featureId: 'api.Element.wheel_event',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Wheel events (api.Element.wheel_event)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.orphans': {
+        featureId: 'css.properties.orphans',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Widows and orphans (css.properties.orphans)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Navigator.windowControlsOverlay': {
+        featureId: 'api.Navigator.windowControlsOverlay',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Window Controls Overlay (api.Navigator.windowControlsOverlay)',
+                payload: {},
+            },
+        ],
+    },
+    'api.Element.requestFullscreen.options_screen_parameter': {
+        featureId: 'api.Element.requestFullscreen.options_screen_parameter',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Window management (api.Element.requestFullscreen.options_screen_parameter)',
+                payload: {},
+            },
+        ],
+    },
+    'javascript.builtins.Array.@@unscopables': {
+        featureId: 'javascript.builtins.Array.@@unscopables',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for with (javascript.builtins.Array.@@unscopables)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.word-break.auto-phrase': {
+        featureId: 'css.properties.word-break.auto-phrase',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for word-break: auto-phrase (css.properties.word-break.auto-phrase)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.word-break.break-word': {
+        featureId: 'css.properties.word-break.break-word',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for word-break: break-word (css.properties.word-break.break-word)',
+                payload: {},
+            },
+        ],
+    },
+    'css.properties.writing-mode.lr': {
+        featureId: 'css.properties.writing-mode.lr',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for writing-mode SVG 1.1 values (css.properties.writing-mode.lr)',
+                payload: {},
+            },
+        ],
+    },
+    'api.HTMLElement.writingSuggestions': {
+        featureId: 'api.HTMLElement.writingSuggestions',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for writingsuggestions (api.HTMLElement.writingSuggestions)',
+                payload: {},
+            },
+        ],
+    },
+    'http.headers.Accept-Encoding.zstd': {
+        featureId: 'http.headers.Accept-Encoding.zstd',
+        fixes: [
+            {
+                type: 'TODO',
+                description: 'TODO: Research the best fix for Zstandard compression (http.headers.Accept-Encoding.zstd)',
+                payload: {},
+            },
+        ],
+    },
+};

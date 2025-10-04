@@ -1,0 +1,7 @@
+name: 'Baseline Health Monitor'
+description: 'Scans the repository for baseline compatibility issues and creates a report.'
+author: 'Your Name'
+
+runs:
+  using: 'node20'
+  main: 'index.js'

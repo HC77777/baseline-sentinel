@@ -1,0 +1,22 @@
+{
+  "name": "action-baseline-sentinel",
+  "version": "0.0.1",
+  "description": "GitHub Action and CLI tool to scan codebases for non-Baseline web features",
+  "main": "index.js",
+  "bin": {
+    "baseline-sentinel": "./index.js"
+  },
+  "scripts": {
+    "test": "node index.js ."
+  },
+  "dependencies": {
+    "baseline-fixer-core": "workspace:*"
+  },
+  "keywords": [
+    "baseline",
+    "web-features",
+    "github-action",
+    "ci",
+    "compatibility"
+  ]
+}

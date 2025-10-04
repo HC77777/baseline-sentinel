@@ -1,0 +1,37 @@
+/* CSS Test File for Baseline Sentinel */
+
+/* Test 1: backdrop-filter - Should show warning with fallback fix */
+.modal {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(10px);
+}
+
+/* Test 2: text-wrap - Should show warning with removal fix */
+.heading {
+  text-wrap: balance;
+  font-size: 2rem;
+}
+
+/* Test 3: :has() selector - Should show warning with comment fix */
+.card:has(.card-image) {
+  padding: 0;
+}
+
+/* Test 4: @container - Should show warning */
+@container (min-width: 600px) {
+  .sidebar {
+    display: flex;
+  }
+}
+
+/* Test 5: color-mix() - Should show warning */
+:root {
+  --mixed: color-mix(in srgb, blue 50%, white);
+}
+
+/* Test 6: oklch() - Should show warning */
+.brand {
+  color: oklch(59.69% 0.154 275.92);
+}
+

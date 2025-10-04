@@ -1,0 +1,77 @@
+{
+  "name": "vscode-baseline-sentinel",
+  "displayName": "Baseline Sentinel",
+  "description": "A VS Code extension to detect and fix non-baseline web features.",
+  "version": "0.0.1",
+  "publisher": "you",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "activationEvents": [
+    "onLanguage:css",
+    "onLanguage:javascript",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "baseline.applyFixesFromReport",
+        "title": "Baseline Sentinel: Apply Fixes from Weekly Report"
+      },
+      {
+        "command": "baseline.sendReportToChat",
+        "title": "Baseline Sentinel: Generate Report for LLM Chat",
+        "icon": "$(report)"
+      },
+      {
+        "command": "baseline.fixAllInFile",
+        "title": "Baseline Sentinel: Fix All Issues in File",
+        "icon": "$(wand)"
+      },
+      {
+        "command": "baseline.setupGitHub",
+        "title": "Baseline Sentinel: Set Up GitHub Actions",
+        "icon": "$(github)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "baseline.fixAllInFile",
+          "when": "editorLangId == css || editorLangId == javascript || editorLangId == typescript || editorLangId == typescriptreact",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Baseline Sentinel",
+      "properties": {
+        "baseline-sentinel.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable the Baseline Sentinel extension."
+        },
+        "baseline-sentinel.hideGitHubSetup": {
+          "type": "boolean",
+          "default": false,
+          "description": "Hide the GitHub Actions setup prompt."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run build",
+    "build": "tsc -b",
+    "watch": "tsc -b -w"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "@types/vscode": "^1.90.0",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "baseline-fixer-core": "workspace:*"
+  }
+}

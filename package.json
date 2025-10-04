@@ -1,0 +1,21 @@
+{
+  "name": "baseline-sentinel",
+  "private": true,
+  "version": "0.0.1",
+  "workspaces": [
+    "packages/*",
+    "scripts"
+  ],
+  "scripts": {
+    "build": "pnpm -r build",
+    "lint": "echo \"linting... (placeholder)\"",
+    "generate-db": "pnpm --filter scripts run generate-db"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "web-features": "^3.1.0"
+  }
+}

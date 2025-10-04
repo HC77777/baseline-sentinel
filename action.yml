@@ -1,0 +1,63 @@
+name: 'Baseline Sentinel'
+description: 'Scan your codebase for non-Baseline web features'
+branding:
+  icon: 'shield'
+  color: 'blue'
+
+inputs:
+  path:
+    description: 'Path to scan (default: current directory)'
+    required: false
+    default: '.'
+  format:
+    description: 'Output format: console, json, or github'
+    required: false
+    default: 'github'
+  fail-on-issues:
+    description: 'Fail the build if issues are found'
+    required: false
+    default: 'false'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 8
+
+    - name: Install Dependencies
+      shell: bash
+      run: |
+        cd ${{ github.action_path }}
+        pnpm install --frozen-lockfile
+
+    - name: Build Baseline Sentinel
+      shell: bash
+      run: |
+        cd ${{ github.action_path }}
+        pnpm run build
+
+    - name: Run Baseline Sentinel
+      shell: bash
+      run: |
+        cd ${{ github.action_path }}
+        if [ "${{ inputs.fail-on-issues }}" = "true" ]; then
+          node packages/action-baseline-sentinel/index.js ${{ github.workspace }}/${{ inputs.path }} ${{ inputs.format }}
+        else
+          node packages/action-baseline-sentinel/index.js ${{ github.workspace }}/${{ inputs.path }} ${{ inputs.format }} || true
+        fi
+
+    - name: Upload Results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: baseline-sentinel-results
+        path: baseline-results.json
+        if-no-files-found: ignore
+
