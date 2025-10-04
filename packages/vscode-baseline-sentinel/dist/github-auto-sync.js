@@ -66,11 +66,12 @@ async function startGitHubAutoSync(context) {
     if (syncInterval) {
         clearInterval(syncInterval);
     }
-    console.log('[Auto-Sync] Starting GitHub polling...');
+    console.log('[Auto-Sync] Starting GitHub polling every 5 seconds...');
     syncInterval = setInterval(async () => {
         await checkForNewResults(token, repoInfo);
     }, 5000); // 5 seconds
     // Check immediately on startup
+    console.log('[Auto-Sync] Initial check...');
     await checkForNewResults(token, repoInfo);
 }
 /**
@@ -115,27 +116,32 @@ function getRepositoryInfo() {
  */
 async function checkForNewResults(token, repoInfo) {
     try {
-        console.log(`[Auto-Sync] Checking ${repoInfo.owner}/${repoInfo.repo}...`);
+        console.log(`[Auto-Sync] Polling... Checking ${repoInfo.owner}/${repoInfo.repo}...`);
         const runs = await fetchLatestWorkflowRuns(token, repoInfo);
         if (!runs || runs.length === 0) {
+            console.log('[Auto-Sync] No workflow runs found.');
             return;
         }
         const baselineRun = runs.find((r) => r.name === 'Baseline Sentinel' || r.name === 'Baseline Sentinel Check');
-        if (!baselineRun || baselineRun.status !== 'completed') {
-            console.log('[Auto-Sync] No completed Baseline runs found.');
+        if (!baselineRun) {
+            console.log('[Auto-Sync] No Baseline Sentinel workflow found.');
+            return;
+        }
+        console.log(`[Auto-Sync] Found run: ${baselineRun.name}, status: ${baselineRun.status}, completed: ${baselineRun.updated_at}`);
+        if (baselineRun.status !== 'completed') {
+            console.log('[Auto-Sync] Workflow still running...');
             return;
         }
         const runCompletedAt = new Date(baselineRun.updated_at);
         // Skip if we've already notified about this run
         if (lastCheckedTime && runCompletedAt <= lastCheckedTime) {
+            console.log('[Auto-Sync] Already notified about this run.');
             return;
         }
+        console.log(`[Auto-Sync] NEW completed run detected! Showing notification...`);
         lastCheckedTime = runCompletedAt;
-        // Try to download the artifact
-        const artifactData = await fetchArtifactData(token, repoInfo, baselineRun.id);
-        if (artifactData) {
-            await showResultsNotification(artifactData);
-        }
+        // Show notification immediately (don't wait for artifact check)
+        await showResultsNotification({ totalIssues: -1, fileReports: [], totalFiles: 0 });
     }
     catch (error) {
         console.error('[Auto-Sync] Error:', error?.message || error);
