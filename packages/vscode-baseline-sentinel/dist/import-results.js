@@ -42,6 +42,7 @@ const https = __importStar(require("https"));
 const fs = __importStar(require("fs"));
 const os = __importStar(require("os"));
 const AdmZip = require("adm-zip");
+const baseline_fixer_core_1 = require("baseline-fixer-core");
 // Store the last imported CI report for "Fix All from CI" command
 let lastCIReport = null;
 let lastCIWorkspaceRoot = null;
@@ -373,23 +374,91 @@ async function openReviewPanel(report, workspaceRoot) {
 async function applyAllFixes(report, workspaceRoot) {
     let fixedFiles = 0;
     let fixedIssues = 0;
+    const edit = new vscode.WorkspaceEdit();
     for (const fileReport of report.fileReports) {
         const filePath = path.join(workspaceRoot, fileReport.path);
         const uri = vscode.Uri.file(filePath);
         try {
             const doc = await vscode.workspace.openTextDocument(uri);
-            const edit = new vscode.WorkspaceEdit();
-            // Note: Actual fixing would require the full remediation database
-            // For now, we just mark the locations
-            // In a full implementation, this would call the same fix logic as FixProvider
+            // Apply fixes for each finding
+            for (const finding of fileReport.findings) {
+                const remediation = (0, baseline_fixer_core_1.getRemediation)(finding.fixId);
+                if (!remediation || remediation.fixes.length === 0) {
+                    continue;
+                }
+                const fix = remediation.fixes[0];
+                const line = doc.lineAt(finding.line - 1); // Convert 1-based to 0-based
+                const range = new vscode.Range(finding.line - 1, 0, finding.line - 1, line.text.length);
+                // Apply the fix based on type
+                await applyFixToRange(doc, range, fix, edit, finding);
+                fixedIssues++;
+            }
             fixedFiles++;
-            fixedIssues += fileReport.findings.length;
         }
         catch (error) {
-            vscode.window.showWarningMessage(`Could not open file: ${fileReport.path}`);
+            console.error(`Failed to fix ${fileReport.path}:`, error);
         }
     }
-    vscode.window.showInformationMessage(`Processed ${fixedFiles} file(s) with ${fixedIssues} issue(s).`);
+    // Apply all edits at once
+    const success = await vscode.workspace.applyEdit(edit);
+    if (success) {
+        vscode.window.showInformationMessage(`✅ Fixed ${fixedIssues} issue(s) in ${fixedFiles} file(s)!`, { modal: true });
+    }
+    else {
+        vscode.window.showErrorMessage(`Failed to apply some fixes. Fixed ${fixedIssues} issue(s) in ${fixedFiles} file(s).`, { modal: true });
+    }
+}
+/**
+ * Applies a fix to a specific range
+ */
+async function applyFixToRange(document, range, fix, edit, finding) {
+    const line = document.lineAt(range.start.line);
+    const lineText = line.text;
+    switch (fix.type) {
+        case 'add-css-declaration': {
+            const payload = fix.payload;
+            const indentation = lineText.match(/^\s*/)?.[0] || '';
+            const newDeclaration = `${indentation}${payload.property}: ${payload.value};`;
+            edit.insert(document.uri, line.range.start, newDeclaration + '\n');
+            break;
+        }
+        case 'remove-css-declaration': {
+            edit.delete(document.uri, line.rangeIncludingLineBreak);
+            break;
+        }
+        case 'replace-property': {
+            const payload = fix.payload;
+            const newText = lineText.replace(payload.old, payload.new);
+            edit.replace(document.uri, line.range, newText);
+            break;
+        }
+        case 'replace-css-declaration': {
+            const payload = fix.payload;
+            let newText = lineText.replace(payload.oldProperty, payload.newProperty);
+            if (payload.newValue) {
+                newText = newText.replace(/:\s*[^;]+;/, `: ${payload.newValue};`);
+            }
+            edit.replace(document.uri, line.range, newText);
+            break;
+        }
+        case 'add-comment-warning':
+        case 'recommend-polyfill': {
+            const payload = fix.payload;
+            const indentation = lineText.match(/^\s*/)?.[0] || '';
+            const eol = document.eol === vscode.EndOfLine.CRLF ? '\r\n' : '\n';
+            // Determine comment syntax based on file type
+            let comment;
+            if (document.languageId === 'css') {
+                comment = `/* ${payload.message} */`;
+            }
+            else {
+                comment = `// ${payload.message}`;
+            }
+            const newText = `${indentation}${comment}${eol}`;
+            edit.insert(document.uri, line.range.start, newText);
+            break;
+        }
+    }
 }
 /**
  * Shows instructions for downloading CI results

@@ -65,7 +65,6 @@
         },
         {
           "command": "baseline.fixAllFromCI",
-          "when": "editorLangId == css || editorLangId == javascript || editorLangId == typescript || editorLangId == typescriptreact",
           "group": "navigation"
         }
       ]
