@@ -368,7 +368,8 @@ async function openReviewPanel(report: CIScanReport, workspaceRoot: string) {
   
   vscode.window.showInformationMessage(
     'Review the issues. Click links to jump to code. Use "Fix All" to auto-fix issues.',
-    'Fix All'
+    { modal: true },
+    'Fix All', 'Done Reviewing'
   ).then(async (selection) => {
     if (selection === 'Fix All') {
       await applyAllFixes(report, workspaceRoot);
