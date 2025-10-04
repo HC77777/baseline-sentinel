@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { scanCode, Finding, getRemediation, Fix } from 'baseline-fixer-core';
 import { FixProvider } from './FixProvider';
 import { setupGitHubAction, promptGitHubActionSetup } from './github-setup';
+import { importCIResults, showDownloadInstructions } from './import-results';
 
 let diagnosticCollection: vscode.DiagnosticCollection;
 // Store the latest findings for the hover provider
@@ -146,6 +147,18 @@ export function activate(context: vscode.ExtensionContext) {
       promptGitHubActionSetup();
     }, 5000);
   }
+
+  // === NEW: Command to import CI results ===
+  const importCICommand = vscode.commands.registerCommand('baseline.importCIResults', async () => {
+    await importCIResults();
+  });
+  context.subscriptions.push(importCICommand);
+
+  // === NEW: Command to show download instructions ===
+  const downloadCommand = vscode.commands.registerCommand('baseline.downloadGitHubResults', async () => {
+    await showDownloadInstructions();
+  });
+  context.subscriptions.push(downloadCommand);
 
   // === NEW: A command to generate a report and copy it to the clipboard ===
   const reportCommand = vscode.commands.registerCommand('baseline.sendReportToChat', () => {

@@ -34,6 +34,16 @@
         "command": "baseline.setupGitHub",
         "title": "Baseline Sentinel: Set Up GitHub Actions",
         "icon": "$(github)"
+      },
+      {
+        "command": "baseline.importCIResults",
+        "title": "Baseline Sentinel: Import CI Scan Results",
+        "icon": "$(cloud-download)"
+      },
+      {
+        "command": "baseline.downloadGitHubResults",
+        "title": "Baseline Sentinel: Download GitHub Actions Results",
+        "icon": "$(github)"
       }
     ],
     "menus": {

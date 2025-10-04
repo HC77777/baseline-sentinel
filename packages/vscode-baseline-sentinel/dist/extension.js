@@ -39,6 +39,7 @@ const vscode = __importStar(require("vscode"));
 const baseline_fixer_core_1 = require("baseline-fixer-core");
 const FixProvider_1 = require("./FixProvider");
 const github_setup_1 = require("./github-setup");
+const import_results_1 = require("./import-results");
 let diagnosticCollection;
 // Store the latest findings for the hover provider
 let latestFindings = new Map();
@@ -149,6 +150,16 @@ function activate(context) {
             (0, github_setup_1.promptGitHubActionSetup)();
         }, 5000);
     }
+    // === NEW: Command to import CI results ===
+    const importCICommand = vscode.commands.registerCommand('baseline.importCIResults', async () => {
+        await (0, import_results_1.importCIResults)();
+    });
+    context.subscriptions.push(importCICommand);
+    // === NEW: Command to show download instructions ===
+    const downloadCommand = vscode.commands.registerCommand('baseline.downloadGitHubResults', async () => {
+        await (0, import_results_1.showDownloadInstructions)();
+    });
+    context.subscriptions.push(downloadCommand);
     // === NEW: A command to generate a report and copy it to the clipboard ===
     const reportCommand = vscode.commands.registerCommand('baseline.sendReportToChat', () => {
         let report = '## Baseline Sentinel Report\n\n';

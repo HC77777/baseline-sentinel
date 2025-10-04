@@ -163,6 +163,18 @@ function generateJsonReport(results) {
 }
 
 /**
+ * Saves results to a file for CI artifacts
+ */
+function saveResultsToFile(results, filename = 'baseline-results.json') {
+  try {
+    fs.writeFileSync(filename, generateJsonReport(results), 'utf-8');
+    console.log(`${colors.cyan}Results saved to ${filename}${colors.reset}`);
+  } catch (error) {
+    console.error(`${colors.red}Failed to save results: ${error.message}${colors.reset}`);
+  }
+}
+
+/**
  * Main execution
  */
 async function main() {
@@ -176,6 +188,9 @@ async function main() {
   }
 
   const results = await scanDirectory(targetDir);
+
+  // Always save results to file for CI artifacts
+  saveResultsToFile(results);
 
   if (format === 'json') {
     console.log(generateJsonReport(results));
