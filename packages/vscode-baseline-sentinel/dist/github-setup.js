@@ -100,6 +100,14 @@ jobs:
           cd baseline-sentinel
           node packages/action-baseline-sentinel/index.js ../project github
         continue-on-error: true
+
+      - name: Upload Baseline Scan Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: baseline-results
+          path: baseline-sentinel/baseline-results.json
+          retention-days: 90
 `;
     // Create directories if needed
     if (!fs.existsSync(workflowDir)) {
