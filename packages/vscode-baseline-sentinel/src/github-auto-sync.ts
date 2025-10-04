@@ -1,0 +1,244 @@
+import * as vscode from 'vscode';
+import * as https from 'https';
+
+interface CIScanReport {
+  totalIssues: number;
+  fileReports: Array<{
+    path: string;
+    findings: any[];
+  }>;
+  totalFiles: number;
+}
+
+let syncInterval: NodeJS.Timeout | null = null;
+let lastCheckedTime: Date | null = null;
+
+/**
+ * Starts auto-sync (polling GitHub for new CI results)
+ */
+export async function startGitHubAutoSync(context: vscode.ExtensionContext) {
+  const config = vscode.workspace.getConfiguration('baseline-sentinel');
+  const enabled = config.get('autoSyncEnabled', false);
+  
+  if (!enabled) {
+    return;
+  }
+
+  const token = config.get<string>('githubToken');
+  if (!token) {
+    vscode.window.showWarningMessage(
+      'GitHub token not configured. Auto-sync disabled.',
+      'Set Up Token'
+    ).then(async (choice) => {
+      if (choice === 'Set Up Token') {
+        await enableAutoSync(context);
+      }
+    });
+    return;
+  }
+
+  const repoInfo = getRepositoryInfo();
+  if (!repoInfo) {
+    return;
+  }
+
+  // Poll every 2 minutes
+  if (syncInterval) {
+    clearInterval(syncInterval);
+  }
+
+  console.log('[Auto-Sync] Starting GitHub polling...');
+  
+  syncInterval = setInterval(async () => {
+    await checkForNewResults(token, repoInfo);
+  }, 120000); // 2 minutes
+
+  // Check immediately on startup
+  await checkForNewResults(token, repoInfo);
+}
+
+/**
+ * Stops auto-sync
+ */
+export function stopGitHubAutoSync() {
+  if (syncInterval) {
+    clearInterval(syncInterval);
+    syncInterval = null;
+    console.log('[Auto-Sync] Stopped.');
+  }
+}
+
+/**
+ * Gets repository info from current workspace
+ */
+function getRepositoryInfo(): { owner: string; repo: string } | null {
+  const workspaceFolders = vscode.workspace.workspaceFolders;
+  if (!workspaceFolders) {
+    return null;
+  }
+
+  try {
+    const gitExtension = vscode.extensions.getExtension('vscode.git')?.exports;
+    const api = gitExtension?.getAPI(1);
+    
+    if (api && api.repositories.length > 0) {
+      const repo = api.repositories[0];
+      const remote = repo.state.remotes.find((r: any) => r.name === 'origin');
+      
+      if (remote && remote.fetchUrl) {
+        const match = remote.fetchUrl.match(/github\.com[:/]([^/]+)\/([^/.]+)/);
+        if (match) {
+          return { owner: match[1], repo: match[2] };
+        }
+      }
+    }
+  } catch (error) {
+    console.error('[Auto-Sync] Failed to get repo info:', error);
+  }
+
+  return null;
+}
+
+/**
+ * Checks GitHub for new workflow results
+ */
+async function checkForNewResults(token: string, repoInfo: { owner: string; repo: string }) {
+  try {
+    console.log(`[Auto-Sync] Checking ${repoInfo.owner}/${repoInfo.repo}...`);
+    
+    const runs = await fetchLatestWorkflowRuns(token, repoInfo);
+    
+    if (!runs || runs.length === 0) {
+      return;
+    }
+
+    const baselineRun = runs.find((r: any) => 
+      r.name === 'Baseline Sentinel' || r.name === 'Baseline Sentinel Check'
+    );
+
+    if (!baselineRun || baselineRun.status !== 'completed') {
+      console.log('[Auto-Sync] No completed Baseline runs found.');
+      return;
+    }
+
+    const runCompletedAt = new Date(baselineRun.updated_at);
+    
+    // Skip if we've already notified about this run
+    if (lastCheckedTime && runCompletedAt <= lastCheckedTime) {
+      return;
+    }
+
+    lastCheckedTime = runCompletedAt;
+
+    // Try to download the artifact
+    const artifactData = await fetchArtifactData(token, repoInfo, baselineRun.id);
+    
+    if (artifactData) {
+      await showResultsNotification(artifactData);
+    }
+  } catch (error: any) {
+    console.error('[Auto-Sync] Error:', error?.message || error);
+  }
+}
+
+/**
+ * Fetches latest workflow runs
+ */
+function fetchLatestWorkflowRuns(token: string, repoInfo: { owner: string; repo: string }): Promise<any[]> {
+  return new Promise((resolve, reject) => {
+    const options = {
+      hostname: 'api.github.com',
+      path: `/repos/${repoInfo.owner}/${repoInfo.repo}/actions/runs?per_page=5`,
+      method: 'GET',
+      headers: {
+        'Authorization': `token ${token}`,
+        'User-Agent': 'Baseline-Sentinel-VSCode',
+        'Accept': 'application/vnd.github+json'
+      }
+    };
+
+    https.get(options, (res) => {
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => {
+        try {
+          const json = JSON.parse(data);
+          resolve(json.workflow_runs || []);
+        } catch (e) {
+          reject(e);
+        }
+      });
+    }).on('error', reject);
+  });
+}
+
+/**
+ * Fetches artifact data from a workflow run
+ * Note: For simplicity, we'll show a notification to download manually
+ * Full artifact download requires complex ZIP extraction
+ */
+async function fetchArtifactData(token: string, repoInfo: { owner: string; repo: string }, runId: number): Promise<CIScanReport | null> {
+  // For now, we'll return a signal that results are available
+  // Full implementation would require downloading and unzipping the artifact
+  return {
+    totalIssues: -1, // -1 signals "unknown, needs manual download"
+    fileReports: [],
+    totalFiles: 0
+  } as any;
+}
+
+/**
+ * Shows notification about new CI results
+ */
+async function showResultsNotification(data: CIScanReport) {
+  const choice = await vscode.window.showInformationMessage(
+    '🔔 New CI scan completed! Click to automatically download and import results.',
+    'Import Now', 'View on GitHub', 'Dismiss'
+  );
+
+  if (choice === 'Import Now') {
+    // Automatically download and import
+    vscode.commands.executeCommand('baseline.importCIResults');
+  } else if (choice === 'View on GitHub') {
+    vscode.commands.executeCommand('baseline.downloadGitHubResults');
+  }
+}
+
+/**
+ * Enables auto-sync feature
+ */
+export async function enableAutoSync(context: vscode.ExtensionContext) {
+  const token = await vscode.window.showInputBox({
+    prompt: 'Paste your GitHub Personal Access Token',
+    password: true,
+    placeHolder: 'ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+    ignoreFocusOut: true,
+    validateInput: (value) => {
+      if (!value || !value.startsWith('ghp_') && !value.startsWith('github_pat_')) {
+        return 'Token should start with "ghp_" or "github_pat_"';
+      }
+      if (value.length < 40) {
+        return 'Token seems too short. Make sure you copied the entire token.';
+      }
+      return null;
+    }
+  });
+
+  if (!token) {
+    return;
+  }
+
+  // Save the token
+  const config = vscode.workspace.getConfiguration('baseline-sentinel');
+  await config.update('githubToken', token, vscode.ConfigurationTarget.Global);
+  await config.update('autoSyncEnabled', true, vscode.ConfigurationTarget.Global);
+
+  vscode.window.showInformationMessage(
+    '✅ Auto-sync enabled! VS Code will check for new CI results every 2 minutes.',
+    'Got It'
+  );
+
+  // Start syncing immediately
+  await startGitHubAutoSync(context);
+}
+

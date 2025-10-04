@@ -37,8 +37,12 @@ exports.importCIResults = importCIResults;
 exports.showDownloadInstructions = showDownloadInstructions;
 const vscode = __importStar(require("vscode"));
 const path = __importStar(require("path"));
+const https = __importStar(require("https"));
+const fs = __importStar(require("fs"));
+const os = __importStar(require("os"));
+const AdmZip = require("adm-zip");
 /**
- * Imports CI scan results and applies fixes
+ * Imports CI scan results - automatically downloads from GitHub
  */
 async function importCIResults() {
     const workspaceFolders = vscode.workspace.workspaceFolders;
@@ -46,49 +50,265 @@ async function importCIResults() {
         vscode.window.showErrorMessage('No workspace folder open.');
         return;
     }
-    // Ask user to paste the JSON report
-    const input = await vscode.window.showInputBox({
-        prompt: 'Paste the CI scan results JSON (or leave empty to load from file)',
-        placeHolder: '{"totalIssues": 18, "fileReports": [...]}',
-        ignoreFocusOut: true
-    });
-    let report;
-    if (!input || input.trim() === '') {
-        // Load from file
-        const fileUri = await vscode.window.showOpenDialog({
-            canSelectFiles: true,
-            canSelectFolders: false,
-            canSelectMany: false,
-            filters: {
-                'JSON': ['json']
-            },
-            title: 'Select CI Results JSON File'
-        });
-        if (!fileUri || fileUri.length === 0) {
+    // Get GitHub token
+    const config = vscode.workspace.getConfiguration('baseline-sentinel');
+    const token = config.get('githubToken');
+    if (!token) {
+        const choice = await vscode.window.showWarningMessage('GitHub token not configured. Auto-download requires a token.', 'Set Up Token', 'Manual Import', 'Cancel');
+        if (choice === 'Set Up Token') {
+            await vscode.commands.executeCommand('baseline.enableAutoSync');
             return;
         }
-        const content = await vscode.workspace.fs.readFile(fileUri[0]);
-        report = JSON.parse(content.toString());
+        else if (choice === 'Manual Import') {
+            await manualImport();
+            return;
+        }
+        else {
+            return;
+        }
     }
-    else {
+    // Show progress
+    await vscode.window.withProgress({
+        location: vscode.ProgressLocation.Notification,
+        title: 'Downloading CI results from GitHub...',
+        cancellable: false
+    }, async (progress) => {
         try {
-            report = JSON.parse(input);
+            // Get repository info
+            const repoInfo = getRepositoryInfo();
+            if (!repoInfo) {
+                throw new Error('Could not detect GitHub repository');
+            }
+            progress.report({ message: 'Finding latest workflow run...' });
+            // Get latest workflow run
+            const runs = await fetchLatestWorkflowRuns(token, repoInfo);
+            const baselineRun = runs.find((r) => r.name === 'Baseline Sentinel' || r.name === 'Baseline Sentinel Check');
+            if (!baselineRun) {
+                throw new Error('No Baseline Sentinel workflow runs found');
+            }
+            progress.report({ message: 'Downloading artifact...' });
+            // Download artifact
+            const report = await downloadArtifact(token, repoInfo, baselineRun.id);
+            progress.report({ message: 'Processing results...' });
+            // Process the report
+            await processReport(report, workspaceFolders[0].uri.fsPath);
         }
         catch (error) {
-            vscode.window.showErrorMessage('Invalid JSON format.');
-            return;
+            vscode.window.showErrorMessage(`Failed to download CI results: ${error.message}`, 'Manual Import').then(async (choice) => {
+                if (choice === 'Manual Import') {
+                    await manualImport();
+                }
+            });
+        }
+    });
+}
+/**
+ * Manual import fallback
+ */
+async function manualImport() {
+    const fileUri = await vscode.window.showOpenDialog({
+        canSelectFiles: true,
+        canSelectFolders: false,
+        canSelectMany: false,
+        filters: {
+            'JSON': ['json']
+        },
+        title: 'Select baseline-results.json'
+    });
+    if (!fileUri || fileUri.length === 0) {
+        return;
+    }
+    const content = await vscode.workspace.fs.readFile(fileUri[0]);
+    const report = JSON.parse(content.toString());
+    const workspaceFolders = vscode.workspace.workspaceFolders;
+    if (workspaceFolders) {
+        await processReport(report, workspaceFolders[0].uri.fsPath);
+    }
+}
+/**
+ * Gets repository info from Git
+ */
+function getRepositoryInfo() {
+    try {
+        const gitExtension = vscode.extensions.getExtension('vscode.git')?.exports;
+        const api = gitExtension?.getAPI(1);
+        if (api && api.repositories.length > 0) {
+            const repo = api.repositories[0];
+            const remote = repo.state.remotes.find((r) => r.name === 'origin');
+            if (remote && remote.fetchUrl) {
+                const match = remote.fetchUrl.match(/github\.com[:/]([^/]+)\/([^/.]+)/);
+                if (match) {
+                    return { owner: match[1], repo: match[2] };
+                }
+            }
         }
     }
+    catch (error) {
+        console.error('[Import] Failed to get repo info:', error);
+    }
+    return null;
+}
+/**
+ * Fetches latest workflow runs
+ */
+function fetchLatestWorkflowRuns(token, repoInfo) {
+    return new Promise((resolve, reject) => {
+        const options = {
+            hostname: 'api.github.com',
+            path: `/repos/${repoInfo.owner}/${repoInfo.repo}/actions/runs?per_page=10`,
+            method: 'GET',
+            headers: {
+                'Authorization': `token ${token}`,
+                'User-Agent': 'Baseline-Sentinel-VSCode',
+                'Accept': 'application/vnd.github+json'
+            }
+        };
+        https.get(options, (res) => {
+            let data = '';
+            res.on('data', chunk => data += chunk);
+            res.on('end', () => {
+                try {
+                    const json = JSON.parse(data);
+                    resolve(json.workflow_runs || []);
+                }
+                catch (e) {
+                    reject(e);
+                }
+            });
+        }).on('error', reject);
+    });
+}
+/**
+ * Downloads and extracts artifact from workflow run
+ */
+async function downloadArtifact(token, repoInfo, runId) {
+    // Get artifacts list
+    const artifacts = await fetchArtifacts(token, repoInfo, runId);
+    const baselineArtifact = artifacts.find((a) => a.name === 'baseline-results');
+    if (!baselineArtifact) {
+        throw new Error('No baseline-results artifact found');
+    }
+    // Download artifact ZIP
+    const zipPath = await downloadArtifactZip(token, repoInfo, baselineArtifact.id);
+    // Extract JSON from ZIP
+    const report = await extractJsonFromZip(zipPath);
+    // Clean up temp file
+    try {
+        fs.unlinkSync(zipPath);
+    }
+    catch (e) {
+        // Ignore cleanup errors
+    }
+    return report;
+}
+/**
+ * Fetches artifacts from a workflow run
+ */
+function fetchArtifacts(token, repoInfo, runId) {
+    return new Promise((resolve, reject) => {
+        const options = {
+            hostname: 'api.github.com',
+            path: `/repos/${repoInfo.owner}/${repoInfo.repo}/actions/runs/${runId}/artifacts`,
+            method: 'GET',
+            headers: {
+                'Authorization': `token ${token}`,
+                'User-Agent': 'Baseline-Sentinel-VSCode',
+                'Accept': 'application/vnd.github+json'
+            }
+        };
+        https.get(options, (res) => {
+            let data = '';
+            res.on('data', chunk => data += chunk);
+            res.on('end', () => {
+                try {
+                    const json = JSON.parse(data);
+                    resolve(json.artifacts || []);
+                }
+                catch (e) {
+                    reject(e);
+                }
+            });
+        }).on('error', reject);
+    });
+}
+/**
+ * Downloads artifact ZIP file
+ */
+function downloadArtifactZip(token, repoInfo, artifactId) {
+    return new Promise((resolve, reject) => {
+        const tempPath = path.join(os.tmpdir(), `baseline-artifact-${Date.now()}.zip`);
+        const file = fs.createWriteStream(tempPath);
+        const options = {
+            hostname: 'api.github.com',
+            path: `/repos/${repoInfo.owner}/${repoInfo.repo}/actions/artifacts/${artifactId}/zip`,
+            method: 'GET',
+            headers: {
+                'Authorization': `token ${token}`,
+                'User-Agent': 'Baseline-Sentinel-VSCode',
+                'Accept': 'application/vnd.github+json'
+            }
+        };
+        https.get(options, (res) => {
+            // Handle redirects
+            if (res.statusCode === 302 || res.statusCode === 301) {
+                const redirectUrl = res.headers.location;
+                if (redirectUrl) {
+                    https.get(redirectUrl, (redirectRes) => {
+                        redirectRes.pipe(file);
+                        file.on('finish', () => {
+                            file.close();
+                            resolve(tempPath);
+                        });
+                    }).on('error', (err) => {
+                        fs.unlinkSync(tempPath);
+                        reject(err);
+                    });
+                }
+                else {
+                    reject(new Error('Redirect location not found'));
+                }
+            }
+            else {
+                res.pipe(file);
+                file.on('finish', () => {
+                    file.close();
+                    resolve(tempPath);
+                });
+            }
+        }).on('error', (err) => {
+            fs.unlinkSync(tempPath);
+            reject(err);
+        });
+    });
+}
+/**
+ * Extracts JSON from ZIP file
+ */
+async function extractJsonFromZip(zipPath) {
+    const zip = new AdmZip(zipPath);
+    const zipEntries = zip.getEntries();
+    for (const entry of zipEntries) {
+        if (entry.entryName === 'baseline-results.json') {
+            const content = entry.getData().toString('utf8');
+            return JSON.parse(content);
+        }
+    }
+    throw new Error('baseline-results.json not found in artifact');
+}
+/**
+ * Process and display the report
+ */
+async function processReport(report, workspaceRoot) {
     // Display summary
     const proceed = await vscode.window.showInformationMessage(`Found ${report.totalIssues} issue(s) in ${report.fileReports.length} file(s). Review and fix?`, 'Review', 'Fix All', 'Cancel');
     if (proceed === 'Cancel' || !proceed) {
         return;
     }
     if (proceed === 'Fix All') {
-        await applyAllFixes(report, workspaceFolders[0].uri.fsPath);
+        await applyAllFixes(report, workspaceRoot);
     }
     else if (proceed === 'Review') {
-        await openReviewPanel(report, workspaceFolders[0].uri.fsPath);
+        await openReviewPanel(report, workspaceRoot);
     }
 }
 /**

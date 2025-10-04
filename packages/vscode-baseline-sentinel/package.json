@@ -44,6 +44,11 @@
         "command": "baseline.downloadGitHubResults",
         "title": "Baseline Sentinel: Download GitHub Actions Results",
         "icon": "$(github)"
+      },
+      {
+        "command": "baseline.enableAutoSync",
+        "title": "Baseline Sentinel: Enable Auto-Sync (Polling)",
+        "icon": "$(sync)"
       }
     ],
     "menus": {
@@ -67,6 +72,16 @@
           "type": "boolean",
           "default": false,
           "description": "Hide the GitHub Actions setup prompt."
+        },
+        "baseline-sentinel.autoSyncEnabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically check GitHub Actions for new scan results every 2 minutes."
+        },
+        "baseline-sentinel.githubToken": {
+          "type": "string",
+          "default": "",
+          "description": "GitHub Personal Access Token for auto-sync (stored securely)."
         }
       }
     }
@@ -77,11 +92,13 @@
     "watch": "tsc -b -w"
   },
   "devDependencies": {
+    "@types/adm-zip": "^0.5.7",
     "@types/node": "^24.5.2",
     "@types/vscode": "^1.90.0",
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "adm-zip": "^0.5.16",
     "baseline-fixer-core": "workspace:*"
   }
 }

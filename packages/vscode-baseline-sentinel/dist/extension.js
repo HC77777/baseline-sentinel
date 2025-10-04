@@ -40,12 +40,13 @@ const baseline_fixer_core_1 = require("baseline-fixer-core");
 const FixProvider_1 = require("./FixProvider");
 const github_setup_1 = require("./github-setup");
 const import_results_1 = require("./import-results");
+const github_auto_sync_1 = require("./github-auto-sync");
 let diagnosticCollection;
 // Store the latest findings for the hover provider
 let latestFindings = new Map();
 // A debounce timer for on-the-fly diagnostics
 let debounceTimer;
-function activate(context) {
+async function activate(context) {
     // Create a diagnostic collection to hold our warnings.
     diagnosticCollection = vscode.languages.createDiagnosticCollection('baselineSentinel');
     context.subscriptions.push(diagnosticCollection);
@@ -150,6 +151,8 @@ function activate(context) {
             (0, github_setup_1.promptGitHubActionSetup)();
         }, 5000);
     }
+    // Start auto-sync if enabled
+    await (0, github_auto_sync_1.startGitHubAutoSync)(context);
     // === NEW: Command to import CI results ===
     const importCICommand = vscode.commands.registerCommand('baseline.importCIResults', async () => {
         await (0, import_results_1.importCIResults)();
@@ -160,6 +163,11 @@ function activate(context) {
         await (0, import_results_1.showDownloadInstructions)();
     });
     context.subscriptions.push(downloadCommand);
+    // === NEW: Command to enable auto-sync ===
+    const enableSyncCommand = vscode.commands.registerCommand('baseline.enableAutoSync', async () => {
+        await (0, github_auto_sync_1.enableAutoSync)(context);
+    });
+    context.subscriptions.push(enableSyncCommand);
     // === NEW: A command to generate a report and copy it to the clipboard ===
     const reportCommand = vscode.commands.registerCommand('baseline.sendReportToChat', () => {
         let report = '## Baseline Sentinel Report\n\n';
@@ -255,4 +263,5 @@ function applyFixToEdit(document, diagnostic, fix, edit) {
 }
 function deactivate() {
     diagnosticCollection.clear();
+    (0, github_auto_sync_1.stopGitHubAutoSync)();
 }

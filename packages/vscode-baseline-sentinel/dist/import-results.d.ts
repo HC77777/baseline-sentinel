@@ -1,5 +1,5 @@
 /**
- * Imports CI scan results and applies fixes
+ * Imports CI scan results - automatically downloads from GitHub
  */
 export declare function importCIResults(): Promise<void>;
 /**

@@ -3,6 +3,7 @@ import { scanCode, Finding, getRemediation, Fix } from 'baseline-fixer-core';
 import { FixProvider } from './FixProvider';
 import { setupGitHubAction, promptGitHubActionSetup } from './github-setup';
 import { importCIResults, showDownloadInstructions } from './import-results';
+import { startGitHubAutoSync, stopGitHubAutoSync, enableAutoSync } from './github-auto-sync';
 
 let diagnosticCollection: vscode.DiagnosticCollection;
 // Store the latest findings for the hover provider
@@ -11,7 +12,7 @@ let latestFindings: Map<string, Finding[]> = new Map();
 let debounceTimer: NodeJS.Timeout;
 
 
-export function activate(context: vscode.ExtensionContext) {
+export async function activate(context: vscode.ExtensionContext) {
   // Create a diagnostic collection to hold our warnings.
   diagnosticCollection = vscode.languages.createDiagnosticCollection('baselineSentinel');
   context.subscriptions.push(diagnosticCollection);
@@ -148,6 +149,9 @@ export function activate(context: vscode.ExtensionContext) {
     }, 5000);
   }
 
+  // Start auto-sync if enabled
+  await startGitHubAutoSync(context);
+
   // === NEW: Command to import CI results ===
   const importCICommand = vscode.commands.registerCommand('baseline.importCIResults', async () => {
     await importCIResults();
@@ -159,6 +163,12 @@ export function activate(context: vscode.ExtensionContext) {
     await showDownloadInstructions();
   });
   context.subscriptions.push(downloadCommand);
+
+  // === NEW: Command to enable auto-sync ===
+  const enableSyncCommand = vscode.commands.registerCommand('baseline.enableAutoSync', async () => {
+    await enableAutoSync(context);
+  });
+  context.subscriptions.push(enableSyncCommand);
 
   // === NEW: A command to generate a report and copy it to the clipboard ===
   const reportCommand = vscode.commands.registerCommand('baseline.sendReportToChat', () => {
@@ -268,4 +278,5 @@ function applyFixToEdit(document: vscode.TextDocument, diagnostic: vscode.Diagno
 
 export function deactivate() {
   diagnosticCollection.clear();
+  stopGitHubAutoSync();
 }
