@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Website - Baseline Sentinel Test</title>
+</head>
+<body>
+  
+  <!-- Deprecated HTML Elements (Should show warnings) -->
+  <marquee>Welcome to our website!</marquee>
+  <center>Centered Text</center>
+  <font color="red" size="5">Old Font Tag</font>
+  
+  <!-- Modern Non-Baseline HTML Elements -->
+  <dialog open>
+    <h2>This is a dialog</h2>
+    <p>Dialog elements are not Baseline.</p>
+    <button>Close</button>
+  </dialog>
+  
+  <details>
+    <summary>Click to expand</summary>
+    <p>Details content here.</p>
+  </details>
+  
+  <!-- Non-Baseline Attributes -->
+  <div popover>
+    This is a popover element
+  </div>
+  
+  <div inert>
+    This content is inert (non-interactive)
+  </div>
+  
+  <!-- Non-Baseline Input Types -->
+  <form>
+    <label>Pick a date:
+      <input type="date" />
+    </label>
+    
+    <label>Choose a color:
+      <input type="color" />
+    </label>
+    
+    <label>Select month:
+      <input type="month" />
+    </label>
+    
+    <label>Select time:
+      <input type="time" />
+    </label>
+  </form>
+  
+  <!-- Lazy Loading (Not Baseline) -->
+  <img src="hero.jpg" alt="Hero" loading="lazy" />
+  <iframe src="video.html" loading="lazy"></iframe>
+  
+  <!-- Regular Baseline Elements (Should NOT show warnings) -->
+  <div class="container">
+    <h1>Hello World</h1>
+    <p>This is a regular paragraph.</p>
+    <button>Click me</button>
+    <input type="text" placeholder="Enter text" />
+    <input type="email" placeholder="Email" />
+    <input type="number" placeholder="Number" />
+  </div>
+  
+</body>
+</html>
+

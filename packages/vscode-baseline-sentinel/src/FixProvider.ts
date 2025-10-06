@@ -21,22 +21,48 @@ export class FixProvider implements vscode.CodeActionProvider {
     actions.push(...diagnosticActions);
     
     // If there are multiple fixable diagnostics, add a "Fix All" action
-    if (diagnosticActions.length > 1) {
+    // (but not for HTML files - too complex with embedded content)
+    if (diagnosticActions.length > 1 && document.languageId !== 'html') {
       const fixAllAction = new vscode.CodeAction(
         `Fix all ${diagnosticActions.length} Baseline Sentinel issues`,
         vscode.CodeActionKind.QuickFix
       );
       fixAllAction.edit = new vscode.WorkspaceEdit();
       
+      // Sort diagnostics from bottom to top, then right to left to avoid overlapping ranges
+      const sortedDiagnostics = context.diagnostics
+        .filter(d => d.code)
+        .sort((a, b) => {
+          const lineDiff = b.range.start.line - a.range.start.line;
+          if (lineDiff !== 0) return lineDiff;
+          return b.range.start.character - a.range.start.character;
+        });
+      
+      const processedInsertPositions = new Set<string>();
+      
       // Apply all fixes to the workspace edit
-      for (const diagnostic of context.diagnostics.filter(d => d.code)) {
+      for (const diagnostic of sortedDiagnostics) {
         const fixId = typeof diagnostic.code === 'object' && diagnostic.code.value ?
           diagnostic.code.value as string :
           diagnostic.code as string;
         const remediation = getRemediation(fixId);
-        if (remediation && remediation.fixes.length > 0) {
-          this.applyFix(document, diagnostic, remediation.fixes[0], fixAllAction.edit);
+        if (!remediation || remediation.fixes.length === 0) {
+          continue;
         }
+        
+        const fix = remediation.fixes[0];
+        
+        // For insert operations (comments), track the insert position to avoid overlaps
+        if (fix.type === 'add-comment-warning' || fix.type === 'recommend-polyfill' || fix.type === 'add-css-declaration') {
+          const line = document.lineAt(diagnostic.range.start.line);
+          const insertPosKey = `${line.range.start.line}:${line.range.start.character}`;
+          if (processedInsertPositions.has(insertPosKey)) {
+            continue;
+          }
+          processedInsertPositions.add(insertPosKey);
+        }
+        
+        this.applyFix(document, diagnostic, fix, fixAllAction.edit);
       }
       
       actions.unshift(fixAllAction); // Add "Fix All" at the beginning
@@ -96,18 +122,32 @@ export class FixProvider implements vscode.CodeActionProvider {
       const line = document.lineAt(diagnostic.range.start.line);
       const indentation = line.text.substring(0, line.firstNonWhitespaceCharacterIndex);
       const eol = document.eol === vscode.EndOfLine.LF ? '\n' : '\r\n';
+      const isHtml = document.languageId === 'html' || document.fileName.endsWith('.html');
       const isCss = document.languageId === 'css' || document.fileName.endsWith('.css');
-      const comment = isCss ? `/* ${fix.payload?.message || 'Warning'} */` : `// ${fix.payload?.message || 'Warning'}`;
+      let comment: string;
+      if (isHtml) {
+        comment = `<!-- ${fix.payload?.message || 'Warning'} -->`;
+      } else if (isCss) {
+        comment = `/* ${fix.payload?.message || 'Warning'} */`;
+      } else {
+        comment = `// ${fix.payload?.message || 'Warning'}`;
+      }
       const newText = `${indentation}${comment}${eol}`;
       edit.insert(document.uri, line.range.start, newText);
     } else if (fix.type === 'recommend-polyfill') {
       const line = document.lineAt(diagnostic.range.start.line);
       const indentation = line.text.substring(0, line.firstNonWhitespaceCharacterIndex);
       const eol = document.eol === vscode.EndOfLine.LF ? '\n' : '\r\n';
+      const isHtml = document.languageId === 'html' || document.fileName.endsWith('.html');
       const isCss = document.languageId === 'css' || document.fileName.endsWith('.css');
-      const comment = isCss
-        ? `/* ${fix.payload?.message || 'Consider adding a polyfill.'} */`
-        : `// ${fix.payload?.message || 'Consider adding a polyfill.'}`;
+      let comment: string;
+      if (isHtml) {
+        comment = `<!-- ${fix.payload?.message || 'Consider adding a polyfill.'} -->`;
+      } else if (isCss) {
+        comment = `/* ${fix.payload?.message || 'Consider adding a polyfill.'} */`;
+      } else {
+        comment = `// ${fix.payload?.message || 'Consider adding a polyfill.'}`;
+      }
       const newText = `${indentation}${comment}${eol}`;
       edit.insert(document.uri, line.range.start, newText);
     }

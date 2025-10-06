@@ -1,0 +1,234 @@
+/* Modern Website Styles - Testing Baseline Sentinel */
+
+/* Color Variables with Modern Color Functions */
+:root {
+  --primary-color: oklch(0.7 0.15 200); /* Not Baseline */
+  --accent-color: color-mix(in srgb, blue 50%, red); /* Not Baseline */
+  --gradient-bg: conic-gradient(from 45deg, #ff0000, #00ff00); /* Not Baseline */
+}
+
+/* Header with Modern Layout */
+.header {
+  position: sticky; /* Not fully Baseline */
+  top: 0;
+  backdrop-filter: blur(10px); /* Not Baseline */
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 100;
+}
+
+/* Navigation with Advanced Selectors */
+.nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav:has(.dropdown:hover) {
+  background: #f0f0f0; /* :has() not Baseline */
+}
+
+.nav-item:focus-visible {
+  outline: 2px solid blue; /* :focus-visible not Baseline */
+}
+
+/* Hero Section with Modern Effects */
+.hero {
+  aspect-ratio: 16 / 9; /* Not Baseline */
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); /* Not Baseline */
+  mix-blend-mode: multiply; /* Not Baseline */
+}
+
+.hero-image {
+  filter: blur(5px) brightness(1.2); /* Complex filters */
+  object-fit: cover;
+}
+
+/* Card Grid with Container Queries */
+@container (min-width: 700px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  container-type: inline-size;
+  container-name: card;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Text Styles with Modern Properties */
+.title {
+  text-wrap: balance; /* Not Baseline */
+  font-size: clamp(2rem, 5vw, 4rem); /* clamp() not Baseline */
+}
+
+.description {
+  text-wrap: pretty; /* Not Baseline */
+  line-height: 1.6;
+}
+
+/* Scroll-Driven Animations */
+@keyframes scroll-fade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-element {
+  animation: scroll-fade linear;
+  animation-timeline: scroll(); /* Not Baseline */
+  scroll-timeline-name: myScroller; /* Not Baseline */
+}
+
+/* Sidebar with Advanced Layout */
+.sidebar {
+  scrollbar-gutter: stable; /* Not Baseline */
+  overflow-y: auto;
+}
+
+/* Button with Advanced States */
+.button {
+  background: var(--primary-color);
+  border: none;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Form with Modern Input Types */
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form-control:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Grid Layout with Subgrid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows: subgrid; /* Not Baseline */
+  gap: 2rem;
+}
+
+/* Footer with Modern Styling */
+.footer {
+  background: linear-gradient(180deg, 
+    oklch(0.3 0.1 250),
+    oklch(0.2 0.05 260)
+  );
+  padding: 3rem 0;
+  color: white;
+}
+
+/* Utility Classes */
+.text-gradient {
+  background: conic-gradient(from 0deg, red, orange, yellow, green, blue, purple, red);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.backdrop-blur {
+  backdrop-filter: blur(20px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero {
+    aspect-ratio: 4 / 3;
+  }
+  
+  .title {
+    font-size: calc(1.5rem + 2vw);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none;
+  }
+  
+  body {
+    color: black;
+    background: white;
+  }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: oklch(0.8 0.15 200);
+    --background: #1a1a1a;
+  }
+  
+  body {
+    background: var(--background);
+    color: white;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* Scroll Snap */
+.scroll-container {
+  scroll-snap-type: y mandatory;
+  scroll-snap-align: start; /* Not Baseline */
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+.scroll-section {
+  scroll-snap-align: start;
+  height: 100vh;
+}
+
+/* Custom Properties for Dynamic Theming */
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.rotating-gradient {
+  background: conic-gradient(from var(--angle), red, blue, green);
+  animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+

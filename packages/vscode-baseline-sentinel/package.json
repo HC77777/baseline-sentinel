@@ -11,7 +11,8 @@
     "onLanguage:css",
     "onLanguage:javascript",
     "onLanguage:typescript",
-    "onLanguage:typescriptreact"
+    "onLanguage:typescriptreact",
+    "onLanguage:html"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -54,10 +55,24 @@
         "command": "baseline.fixAllFromCI",
         "title": "Baseline Sentinel: Fix All Issues from Last CI Scan",
         "icon": "$(cloud-download)"
-      }
-    ],
+      },
+        {
+          "command": "baseline.openDashboard",
+          "title": "Baseline Sentinel: Open Dashboard",
+          "icon": "$(dashboard)"
+        },
+        {
+          "command": "baseline.generateWorkspaceReport",
+          "title": "Baseline Sentinel: Generate Workspace Compatibility Report",
+          "icon": "$(file-text)"
+        }
+      ],
     "menus": {
       "editor/title": [
+        {
+          "command": "baseline.openDashboard",
+          "group": "navigation"
+        },
         {
           "command": "baseline.fixAllInFile",
           "when": "editorLangId == css || editorLangId == javascript || editorLangId == typescript || editorLangId == typescriptreact",
@@ -87,11 +102,26 @@
           "default": false,
           "description": "Automatically check GitHub Actions for new scan results every 2 minutes."
         },
-        "baseline-sentinel.githubToken": {
-          "type": "string",
-          "default": "",
-          "description": "GitHub Personal Access Token for auto-sync (stored securely)."
-        }
+      "baseline-sentinel.githubToken": {
+        "type": "string",
+        "default": "",
+        "description": "GitHub Personal Access Token for auto-sync (stored securely)."
+      },
+      "baseline-sentinel.autoSendReportOnSave": {
+        "type": "boolean",
+        "default": false,
+        "description": "Automatically send scan report to LLM chat when a file with issues is saved (for vibe coders)."
+      },
+      "baseline-sentinel.openaiApiKey": {
+        "type": "string",
+        "default": "",
+        "description": "OpenAI API Key for AI-powered report generation (optional). Get yours at https://platform.openai.com/api-keys"
+      },
+      "baseline-sentinel.useOpenAIReports": {
+        "type": "boolean",
+        "default": true,
+        "description": "Use OpenAI to enhance reports with beautiful visuals and clear language. Disable for faster, standard reports."
+      }
       }
     }
   },

@@ -8,6 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 const { scanCode } = require('baseline-fixer-core');
+const { generateCompatibilityReport, saveReports } = require('./compatibility-report-generator');
 
 // ANSI color codes for terminal output
 const colors = {
@@ -181,6 +182,7 @@ async function main() {
   const args = process.argv.slice(2);
   const targetDir = args[0] || process.cwd();
   const format = args[1] || 'console'; // console, json, or github
+  const openaiApiKey = process.env.OPENAI_API_KEY || null;
 
   if (!fs.existsSync(targetDir)) {
     console.error(`${colors.red}Error: Directory not found: ${targetDir}${colors.reset}`);
@@ -191,6 +193,24 @@ async function main() {
 
   // Always save results to file for CI artifacts
   saveResultsToFile(results);
+
+  // Generate comprehensive compatibility report (Phase 4)
+  if (results.totalIssues > 0) {
+    console.log(`\n${colors.cyan}${colors.bold}Generating compatibility report...${colors.reset}`);
+    
+    try {
+      const { markdown, json } = await generateCompatibilityReport(results, openaiApiKey);
+      await saveReports(markdown, json, '.');
+      
+      console.log(`${colors.green}✓ Compatibility report generated successfully${colors.reset}`);
+      if (openaiApiKey) {
+        console.log(`${colors.green}  (with AI-powered insights)${colors.reset}`);
+      }
+    } catch (error) {
+      console.error(`${colors.yellow}⚠ Compatibility report generation failed: ${error.message}${colors.reset}`);
+      console.error(`${colors.yellow}  Continuing with basic results...${colors.reset}`);
+    }
+  }
 
   if (format === 'json') {
     console.log(generateJsonReport(results));

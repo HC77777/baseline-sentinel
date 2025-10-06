@@ -47,21 +47,20 @@ let statusBarItem = null;
 async function startGitHubAutoSync(context) {
     const config = vscode.workspace.getConfiguration('baseline-sentinel');
     const enabled = config.get('autoSyncEnabled', false);
+    // Silently skip if not enabled (don't show any errors)
     if (!enabled) {
         return;
     }
     const token = config.get('githubToken');
     if (!token) {
-        vscode.window.showWarningMessage('GitHub token not configured. Auto-sync disabled.', { modal: true }, 'Set Up Token').then(async (choice) => {
-            if (choice === 'Set Up Token') {
-                await enableAutoSync(context);
-            }
-        });
+        // Only show error if auto-sync was explicitly enabled
+        console.log('[Auto-Sync] GitHub token not configured');
         return;
     }
     const repoInfo = getRepositoryInfo();
     if (!repoInfo) {
-        vscode.window.showWarningMessage('Cannot start auto-sync: No GitHub repository detected');
+        // Only log, don't show error popup (user might not be in a git repo)
+        console.log('[Auto-Sync] No GitHub repository detected in current workspace');
         return;
     }
     // Create status bar item

@@ -31,7 +31,15 @@ export async function setupGitHubAction() {
   // Create workflow content that clones baseline-sentinel and runs the scanner
   const workflowContent = `name: Baseline Sentinel
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  schedule:
+    # Weekly scan every Monday at 9 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch: # Manual trigger
 
 jobs:
   scan:
@@ -65,7 +73,9 @@ jobs:
           pnpm install
           pnpm run build
 
-      - name: Run Scan
+      - name: Run Scan & Generate Compatibility Report
+        env:
+          OPENAI_API_KEY: \${{ secrets.OPENAI_API_KEY }}
         run: |
           cd baseline-sentinel
           node packages/action-baseline-sentinel/index.js ../project github
@@ -76,8 +86,30 @@ jobs:
         if: always()
         with:
           name: baseline-results
-          path: baseline-sentinel/baseline-results.json
+          path: |
+            baseline-sentinel/baseline-results.json
+            baseline-sentinel/baseline-compatibility-report.md
+            baseline-sentinel/baseline-compatibility-data.json
           retention-days: 90
+      
+      - name: Comment PR with Report Summary
+        if: github.event_name == 'pull_request' && always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            try {
+              const report = fs.readFileSync('baseline-sentinel/baseline-compatibility-report.md', 'utf8');
+              const summary = report.split('\\n').slice(0, 30).join('\\n');
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: summary + '\\n\\n[View full report in artifacts]'
+              });
+            } catch (error) {
+              console.log('No report file found or PR comment failed');
+            }
 `;
 
   // Create directories if needed
