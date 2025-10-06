@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Baseline Sentinel HTML Test</title>
+  
+  <!-- Test: Inline CSS with non-Baseline property -->
+  <style>
+    .panel {
+      backdrop-filter: blur(10px); /* Should show warning */
+      text-wrap: balance; /* Should show warning */
+    }
+    
+    .container {
+      scrollbar-gutter: stable; /* Should show warning */
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Test 1: Deprecated HTML Elements -->
+  <center>This is deprecated!</center> <!-- Should show warning -->
+  <font color="red">Old font tag</font> <!-- Should show warning -->
+  <marquee>Scrolling text</marquee> <!-- Should show warning -->
+  
+  <!-- Test 2: Modern HTML Elements (Not Baseline) -->
+  <dialog open>
+    <p>This is a dialog element</p> <!-- Should show warning -->
+  </dialog>
+  
+  <!-- Test 3: Non-Baseline Attributes -->
+  <div popover>Popover content</div> <!-- Should show warning for popover -->
+  <div inert>Inert content</div> <!-- Should show warning for inert -->
+  
+  <!-- Test 4: Non-Baseline Input Types -->
+  <input type="date" /> <!-- Should show warning -->
+  <input type="color" /> <!-- Should show warning -->
+  <input type="month" /> <!-- Should show warning -->
+  
+  <!-- Test 5: Loading Attribute (Not Baseline) -->
+  <img src="image.jpg" loading="lazy" alt="Test" /> <!-- Should show warning -->
+  <iframe src="page.html" loading="lazy"></iframe> <!-- Should show warning -->
+  
+  <!-- Test 6: Inline Styles with Non-Baseline CSS -->
+  <div style="backdrop-filter: blur(5px); opacity: 0.9;">
+    Inline backdrop filter <!-- Should show warning for backdrop-filter -->
+  </div>
+  
+  <!-- Test 7: Inline JavaScript with Non-Baseline APIs -->
+  <script>
+    // Test non-Baseline JavaScript
+    const arr = [1, 2, 3];
+    const last = arr.at(-1); // Should show warning
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.keyCode === 27) { // Should show warning
+        console.log('Escape pressed');
+      }
+    });
+    
+    // Test ResizeObserver
+    const observer = new ResizeObserver(() => {}); // Should show warning
+  </script>
+  
+  <!-- Test 8: Safe/Baseline Elements (Should NOT show warnings) -->
+  <div class="safe-element">
+    <p>Regular paragraph</p>
+    <button>Click me</button>
+    <input type="text" placeholder="Safe input" />
+    <a href="#">Safe link</a>
+  </div>
+  
+</body>
+</html>
+

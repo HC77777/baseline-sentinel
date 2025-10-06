@@ -42,6 +42,9 @@ importers:
       compute-baseline:
         specifier: ^0.4.0
         version: 0.4.0(@mdn/browser-compat-data@7.1.8)
+      parse5:
+        specifier: ^8.0.0
+        version: 8.0.0
       postcss:
         specifier: ^8.5.6
         version: 8.5.6
@@ -52,6 +55,9 @@ importers:
       '@types/babel__traverse':
         specifier: ^7.28.0
         version: 7.28.0
+      '@types/parse5':
+        specifier: ^7.0.0
+        version: 7.0.0
       typescript:
         specifier: ^5.4.5
         version: 5.9.2

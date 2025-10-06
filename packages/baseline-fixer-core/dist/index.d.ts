@@ -44,6 +44,7 @@ export declare function scanCss(cssContent: string): Promise<Finding[]>;
 export declare function scanJs(jsContent: string): Promise<Finding[]>;
 /**
  * Scans HTML content for non-Baseline features
+ * Checks: HTML elements, attributes, inline styles, and inline scripts
  */
 export declare function scanHtml(htmlContent: string): Promise<Finding[]>;
 /**
