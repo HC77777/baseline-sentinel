@@ -25,7 +25,7 @@ export async function activate(context: vscode.ExtensionContext) {
   diagnosticCollection = vscode.languages.createDiagnosticCollection('baselineSentinel');
   context.subscriptions.push(diagnosticCollection);
 
-  const supportedLanguages = ['css', 'javascript', 'typescript', 'typescriptreact'];
+  const supportedLanguages = ['css', 'javascript', 'typescript', 'typescriptreact', 'html'];
 
   // Run the scanner on the active editor when the extension is activated.
   if (vscode.window.activeTextEditor && supportedLanguages.includes(vscode.window.activeTextEditor.document.languageId)) {

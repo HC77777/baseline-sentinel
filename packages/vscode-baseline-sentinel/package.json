@@ -11,7 +11,8 @@
     "onLanguage:css",
     "onLanguage:javascript",
     "onLanguage:typescript",
-    "onLanguage:typescriptreact"
+    "onLanguage:typescriptreact",
+    "onLanguage:html"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -60,7 +61,7 @@
       "editor/title": [
         {
           "command": "baseline.fixAllInFile",
-          "when": "editorLangId == css || editorLangId == javascript || editorLangId == typescript || editorLangId == typescriptreact",
+          "when": "editorLangId == css || editorLangId == javascript || editorLangId == typescript || editorLangId == typescriptreact || editorLangId == html",
           "group": "navigation"
         },
         {

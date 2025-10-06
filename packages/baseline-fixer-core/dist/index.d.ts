@@ -33,7 +33,7 @@ export interface Finding {
 /**
  * The main scanning function. It delegates to the appropriate language-specific scanner.
  */
-export declare function scanCode(content: string, language: 'css' | 'javascript' | 'typescript' | 'typescriptreact'): Promise<Finding[]>;
+export declare function scanCode(content: string, language: 'css' | 'javascript' | 'typescript' | 'typescriptreact' | 'html'): Promise<Finding[]>;
 /**
  * Scans a string of CSS content using PostCSS to find non-baseline features.
  */
@@ -42,6 +42,11 @@ export declare function scanCss(cssContent: string): Promise<Finding[]>;
  * Scans a string of JavaScript content using Babel to find deprecated APIs.
  */
 export declare function scanJs(jsContent: string): Promise<Finding[]>;
+/**
+ * Scans HTML content for non-Baseline features
+ * Checks: HTML elements, attributes, inline styles, and inline scripts
+ */
+export declare function scanHtml(htmlContent: string): Promise<Finding[]>;
 /**
  * A helper function to get a remediation from the database.
  */

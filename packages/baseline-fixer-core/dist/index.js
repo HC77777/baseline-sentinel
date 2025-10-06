@@ -1,4 +1,37 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || (function () {
+    var ownKeys = function(o) {
+        ownKeys = Object.getOwnPropertyNames || function (o) {
+            var ar = [];
+            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
+            return ar;
+        };
+        return ownKeys(o);
+    };
+    return function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
+        __setModuleDefault(result, mod);
+        return result;
+    };
+})();
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -6,12 +39,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.scanCode = scanCode;
 exports.scanCss = scanCss;
 exports.scanJs = scanJs;
+exports.scanHtml = scanHtml;
 exports.getRemediation = getRemediation;
 const postcss_1 = __importDefault(require("postcss"));
 const parser_1 = require("@babel/parser");
 // CORRECTED IMPORT: Import the module and handle the default export manually.
 const traverse_1 = __importDefault(require("@babel/traverse"));
 const web_features_1 = require("web-features");
+const parse5 = __importStar(require("parse5"));
 const traverse = traverse_1.default.default || traverse_1.default;
 // ==================================================================================
 // 2. REMEDIATION DATABASE (Expanded)
@@ -1058,9 +1093,99 @@ const MANUAL_REMEDIATIONS = {
         ]
     },
 };
+/**
+ * HTML-specific manual remediations for deprecated elements and attributes
+ */
+const HTML_REMEDIATIONS = {
+    // Deprecated HTML Elements
+    'html.elements.marquee': {
+        featureId: 'html.elements.marquee',
+        fixes: [{
+                type: 'add-comment-warning',
+                description: 'Marquee element is deprecated',
+                payload: { message: 'WARNING: <marquee> is deprecated. Use CSS animations instead. (baseline-disable-next-line html.elements.marquee)' }
+            }]
+    },
+    'html.elements.blink': {
+        featureId: 'html.elements.blink',
+        fixes: [{
+                type: 'add-comment-warning',
+                description: 'Blink element is deprecated',
+                payload: { message: 'WARNING: <blink> is deprecated. Use CSS animations instead. (baseline-disable-next-line html.elements.blink)' }
+            }]
+    },
+    'html.elements.center': {
+        featureId: 'html.elements.center',
+        fixes: [{
+                type: 'add-comment-warning',
+                description: 'Center element is deprecated',
+                payload: { message: 'WARNING: <center> is deprecated. Use CSS text-align instead. (baseline-disable-next-line html.elements.center)' }
+            }]
+    },
+    'html.elements.font': {
+        featureId: 'html.elements.font',
+        fixes: [{
+                type: 'add-comment-warning',
+                description: 'Font element is deprecated',
+                payload: { message: 'WARNING: <font> is deprecated. Use CSS font properties instead. (baseline-disable-next-line html.elements.font)' }
+            }]
+    },
+    // Modern HTML Elements (Not Baseline)
+    'html.elements.dialog': {
+        featureId: 'html.elements.dialog',
+        fixes: [{
+                type: 'recommend-polyfill',
+                description: 'Dialog element polyfill',
+                payload: { message: 'Consider using dialog-polyfill for <dialog> support. (baseline-disable-next-line html.elements.dialog)' }
+            }]
+    },
+    // HTML Attributes
+    'html.global_attributes.popover': {
+        featureId: 'html.global_attributes.popover',
+        fixes: [{
+                type: 'recommend-polyfill',
+                description: 'Popover attribute is not Baseline',
+                payload: { message: 'WARNING: popover attribute is not Baseline. Consider fallback UI. (baseline-disable-next-line html.global_attributes.popover)' }
+            }]
+    },
+    'html.global_attributes.inert': {
+        featureId: 'html.global_attributes.inert',
+        fixes: [{
+                type: 'recommend-polyfill',
+                description: 'Inert attribute polyfill',
+                payload: { message: 'Consider using wicg-inert polyfill for inert attribute. (baseline-disable-next-line html.global_attributes.inert)' }
+            }]
+    },
+    'html.elements.input.type_date': {
+        featureId: 'html.elements.input.type_date',
+        fixes: [{
+                type: 'recommend-polyfill',
+                description: 'Date input polyfill',
+                payload: { message: 'Consider using a date picker polyfill for <input type="date">. (baseline-disable-next-line html.elements.input.type_date)' }
+            }]
+    },
+    'html.elements.input.type_color': {
+        featureId: 'html.elements.input.type_color',
+        fixes: [{
+                type: 'recommend-polyfill',
+                description: 'Color input polyfill',
+                payload: { message: 'Consider using a color picker polyfill for <input type="color">. (baseline-disable-next-line html.elements.input.type_color)' }
+            }]
+    },
+    // Loading attribute
+    'html.elements.img.loading': {
+        featureId: 'html.elements.img.loading',
+        fixes: [{
+                type: 'recommend-polyfill',
+                description: 'Loading lazy attribute',
+                payload: { message: 'Consider using loading="lazy" polyfill or intersection observer. (baseline-disable-next-line html.elements.img.loading)' }
+            }]
+    },
+};
 const REMEDIATION_DATABASE = {
     ...remediation_database_js_1.REMEDIATION_DATABASE,
     ...MANUAL_REMEDIATIONS,
+    ...HTML_REMEDIATIONS,
 };
 // ==================================================================================
 // 3. AST-BASED SCANNER
@@ -1095,6 +1220,9 @@ async function scanCode(content, language) {
     }
     if (language === 'javascript' || language === 'typescript' || language === 'typescriptreact') {
         return scanJs(content);
+    }
+    if (language === 'html') {
+        return scanHtml(content);
     }
     return [];
 }
@@ -1262,6 +1390,198 @@ async function scanJs(jsContent) {
         console.error('Babel parsing error:', e);
     }
     return findings;
+}
+/**
+ * Scans HTML content for non-Baseline features
+ * Checks: HTML elements, attributes, inline styles, and inline scripts
+ */
+async function scanHtml(htmlContent) {
+    const findings = [];
+    try {
+        const document = parse5.parse(htmlContent, {
+            sourceCodeLocationInfo: true
+        });
+        // Traverse the HTML tree
+        traverseHtmlNode(document, findings, htmlContent);
+    }
+    catch (error) {
+        console.error('HTML parsing error:', error);
+    }
+    return findings;
+}
+/**
+ * Helper to push HTML findings with correct format
+ */
+function pushHtmlFinding(findings, featureId, message, line, column) {
+    // Avoid duplicates
+    if (findings.some(f => f.featureId === featureId && f.line === line && f.column === column)) {
+        return;
+    }
+    const feature = web_features_1.features[featureId];
+    const mdnUrl = feature?.mdn_url;
+    findings.push({
+        featureId,
+        type: 'css-property', // Reusing existing type
+        message,
+        line,
+        column,
+        endLine: line,
+        endColumn: column + 10, // Approximate end
+        fixId: featureId,
+        mdnUrl: mdnUrl || undefined,
+    });
+}
+/**
+ * Recursively traverses HTML nodes to find non-Baseline features
+ */
+function traverseHtmlNode(node, findings, htmlContent) {
+    // Check if node has children
+    if (node.childNodes) {
+        for (const child of node.childNodes) {
+            // Check element nodes
+            if (child.nodeName && child.nodeName !== '#text' && child.nodeName !== '#comment') {
+                checkHtmlElement(child, findings, htmlContent);
+            }
+            // Recurse into children
+            traverseHtmlNode(child, findings, htmlContent);
+        }
+    }
+}
+/**
+ * Checks an HTML element for non-Baseline features
+ */
+function checkHtmlElement(node, findings, htmlContent) {
+    const tagName = node.nodeName?.toLowerCase();
+    if (!tagName)
+        return;
+    const location = node.sourceCodeLocation;
+    if (!location)
+        return;
+    // Check deprecated HTML elements
+    const deprecatedElements = ['marquee', 'blink', 'center', 'font', 'big', 'strike', 'tt'];
+    if (deprecatedElements.includes(tagName)) {
+        const featureId = `html.elements.${tagName}`;
+        if (REMEDIATION_DATABASE[featureId]) {
+            pushHtmlFinding(findings, featureId, `Deprecated HTML element: <${tagName}>`, location.startLine || 1, location.startCol || 0);
+        }
+    }
+    // Check modern HTML elements that aren't Baseline
+    const modernElements = ['dialog', 'details', 'summary'];
+    if (modernElements.includes(tagName)) {
+        const featureId = `html.elements.${tagName}`;
+        if (REMEDIATION_DATABASE[featureId]) {
+            pushHtmlFinding(findings, featureId, `HTML element <${tagName}> is not Baseline`, location.startLine || 1, location.startCol || 0);
+        }
+    }
+    // Check attributes
+    if (node.attrs) {
+        for (const attr of node.attrs) {
+            checkHtmlAttribute(attr, tagName, location, findings);
+        }
+    }
+    // Check inline styles
+    const styleAttr = node.attrs?.find((a) => a.name === 'style');
+    if (styleAttr && styleAttr.value) {
+        checkInlineStyle(styleAttr.value, location.startLine || 1, findings);
+    }
+    // Check inline scripts
+    if (tagName === 'script' && node.childNodes) {
+        for (const child of node.childNodes) {
+            if (child.nodeName === '#text' && child.value) {
+                checkInlineScript(child.value, location.startLine || 1, findings);
+            }
+        }
+    }
+    // Check style blocks
+    if (tagName === 'style' && node.childNodes) {
+        for (const child of node.childNodes) {
+            if (child.nodeName === '#text' && child.value) {
+                checkStyleBlock(child.value, location.startLine || 1, findings);
+            }
+        }
+    }
+}
+/**
+ * Checks HTML attributes for non-Baseline features
+ */
+function checkHtmlAttribute(attr, tagName, location, findings) {
+    const attrName = attr.name.toLowerCase();
+    // Check global attributes
+    const nonBaselineAttrs = ['popover', 'inert', 'enterkeyhint'];
+    if (nonBaselineAttrs.includes(attrName)) {
+        const featureId = `html.global_attributes.${attrName}`;
+        if (REMEDIATION_DATABASE[featureId]) {
+            pushHtmlFinding(findings, featureId, `HTML attribute '${attrName}' is not Baseline`, location.startLine || 1, location.startCol || 0);
+        }
+    }
+    // Check input types
+    if (tagName === 'input' && attrName === 'type') {
+        const typeValue = attr.value.toLowerCase();
+        const nonBaselineTypes = ['date', 'color', 'datetime-local', 'month', 'week', 'time'];
+        if (nonBaselineTypes.includes(typeValue)) {
+            const featureId = `html.elements.input.type_${typeValue.replace('-', '_')}`;
+            if (REMEDIATION_DATABASE[featureId]) {
+                pushHtmlFinding(findings, featureId, `Input type="${typeValue}" is not Baseline`, location.startLine || 1, location.startCol || 0);
+            }
+        }
+    }
+    // Check loading attribute
+    if (attrName === 'loading' && (tagName === 'img' || tagName === 'iframe')) {
+        const featureId = `html.elements.${tagName}.loading`;
+        if (REMEDIATION_DATABASE[featureId]) {
+            pushHtmlFinding(findings, featureId, `loading="${attr.value}" attribute is not Baseline`, location.startLine || 1, location.startCol || 0);
+        }
+    }
+}
+/**
+ * Checks inline CSS styles for non-Baseline properties
+ */
+async function checkInlineStyle(styleContent, baseLine, findings) {
+    try {
+        // Parse the inline style as CSS
+        const cssFindings = await scanCss(styleContent);
+        // Adjust line numbers
+        for (const finding of cssFindings) {
+            finding.line += baseLine;
+            findings.push(finding);
+        }
+    }
+    catch (error) {
+        // Ignore CSS parsing errors in inline styles
+    }
+}
+/**
+ * Checks inline JavaScript for non-Baseline features
+ */
+async function checkInlineScript(scriptContent, baseLine, findings) {
+    try {
+        // Parse the inline script as JavaScript
+        const jsFindings = await scanJs(scriptContent);
+        // Adjust line numbers
+        for (const finding of jsFindings) {
+            finding.line += baseLine;
+            findings.push(finding);
+        }
+    }
+    catch (error) {
+        // Ignore JS parsing errors in inline scripts
+    }
+}
+/**
+ * Checks CSS in <style> blocks for non-Baseline properties
+ */
+async function checkStyleBlock(styleContent, baseLine, findings) {
+    try {
+        const cssFindings = await scanCss(styleContent);
+        // Adjust line numbers
+        for (const finding of cssFindings) {
+            finding.line += baseLine;
+            findings.push(finding);
+        }
+    }
+    catch (error) {
+        // Ignore CSS parsing errors
+    }
 }
 /**
  * A helper function to get a remediation from the database.
